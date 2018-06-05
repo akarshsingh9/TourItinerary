@@ -18,7 +18,8 @@
         </activity>
         <activity android:name=".CreateTI" />
         <activity android:name=".ListTI" />
-        <activity android:name=".addTI"></activity>
+        <activity android:name=".addTI" />
+        <activity android:name=".addTI_Form"></activity>
     </application>
 
 </manifest>

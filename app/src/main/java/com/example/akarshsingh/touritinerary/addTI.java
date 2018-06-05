@@ -3,6 +3,7 @@ package com.example.akarshsingh.touritinerary;
 import android.animation.Animator;
 import android.animation.AnimatorListenerAdapter;
 import android.animation.ValueAnimator;
+import android.content.Intent;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
@@ -33,6 +34,13 @@ public class addTI extends AppCompatActivity {
         nameHeaderLayout = (RelativeLayout)findViewById(R.id.nameHeader_layout);
         expandLayout = (RelativeLayout)findViewById(R.id.expand_officerInfo);
 
+        add_fab.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(addTI.this, addTI_Form.class);
+                startActivity(intent);
+            }
+        });
 
     }
 
