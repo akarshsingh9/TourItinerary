@@ -3,8 +3,10 @@ package com.example.akarshsingh.touritinerary;
 import android.app.DatePickerDialog;
 import android.app.Dialog;
 import android.app.TimePickerDialog;
+import android.content.Intent;
 import android.support.annotation.NonNull;
 import android.support.annotation.StringRes;
+import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -28,6 +30,7 @@ public class addTI_Form extends AppCompatActivity {
     Button setbtn,setbtn1;
     EditText timedept,datedept;
     Spinner travelmode,fromspinner, tospinner;
+    FloatingActionButton submitfab;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -45,6 +48,7 @@ public class addTI_Form extends AppCompatActivity {
         travelmode = (Spinner)findViewById(R.id.travelmode_spinner);
         fromspinner = (Spinner)findViewById(R.id.from_spinner);
         tospinner = (Spinner)findViewById(R.id.to_spinner);
+        submitfab = (FloatingActionButton)findViewById(R.id.submit_fab);
 
         //travel mode spinner
         List<String> travelmode_list = new ArrayList<String>();
@@ -108,11 +112,19 @@ public class addTI_Form extends AppCompatActivity {
                     public void onTimeSet(TimePicker view, int hourOfDay, int minute) {
                         timedept.setText(""+hourOfDay+":"+""+minute);
                     }
-                    },mHour,mMinute,true);
+                    },mHour,mMinute,false);
 
                 timePickerDialog.show();
             }
 
+        });
+
+        submitfab.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent submit_intent = new Intent(addTI_Form.this,addTI.class);
+                startActivity(submit_intent);
+            }
         });
 
 

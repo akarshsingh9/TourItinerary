@@ -22,7 +22,7 @@
             android:id="@+id/head_tino"
             android:layout_marginTop="12dp"
             android:layout_marginStart="12dp"
-            android:textSize="20sp"
+            android:textAppearance="@style/Base.TextAppearance.AppCompat.Medium"
             android:textColor="#000000"
             android:text="Tour Itinerary #"/>
 
@@ -31,8 +31,8 @@
             android:layout_height="wrap_content"
             android:id="@+id/tino"
             android:layout_marginTop="5dp"
-            android:layout_marginStart="16dp"
-            android:textSize="18sp"
+            android:layout_marginStart="12dp"
+            android:textAppearance="@style/Base.TextAppearance.AppCompat.Small"
             android:text="2016_1234"/>
 
         <TextView
@@ -41,7 +41,7 @@
             android:id="@+id/head_status"
             android:layout_marginTop="10dp"
             android:layout_marginStart="12dp"
-            android:textSize="20sp"
+            android:textAppearance="@style/Base.TextAppearance.AppCompat.Medium"
             android:textColor="#000000"
             android:text="Status"/>
 
@@ -50,8 +50,8 @@
             android:layout_height="wrap_content"
             android:id="@+id/status"
             android:layout_marginTop="5dp"
-            android:layout_marginStart="16dp"
-            android:textSize="18sp"
+            android:layout_marginStart="12dp"
+            android:textAppearance="@style/Base.TextAppearance.AppCompat.Small"
             android:text="Saved as Draft"/>
 
             <TextView
@@ -60,7 +60,7 @@
                 android:id="@+id/head_enterby"
                 android:layout_marginTop="10dp"
                 android:layout_marginStart="12dp"
-                android:textSize="20sp"
+                android:textAppearance="@style/Base.TextAppearance.AppCompat.Medium"
                 android:textColor="#000000"
                 android:text="Entered By"/>
 
@@ -68,7 +68,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="5dp"
-                android:layout_marginStart="16dp"
+                android:layout_marginStart="12dp"
                 android:layout_marginEnd="60dp"
                 android:id="@+id/enterby_spinner"
                 android:popupElevation="3dp"
@@ -80,7 +80,7 @@
                 android:id="@+id/head_date"
                 android:layout_marginTop="10dp"
                 android:layout_marginStart="12dp"
-                android:textSize="20sp"
+                android:textAppearance="@style/Base.TextAppearance.AppCompat.Medium"
                 android:textColor="#000000"
                 android:text="Tour Itinerary Created on"/>
 
@@ -89,8 +89,8 @@
                 android:layout_height="wrap_content"
                 android:id="@+id/date"
                 android:layout_marginTop="5dp"
-                android:layout_marginStart="16dp"
-                android:textSize="18sp"
+                android:layout_marginStart="12dp"
+                android:textAppearance="@style/Base.TextAppearance.AppCompat.Small"
                 android:text="27-Apr-2016"/>
 
             <TextView
@@ -99,7 +99,7 @@
                 android:id="@+id/head_TIfor"
                 android:layout_marginTop="10dp"
                 android:layout_marginStart="12dp"
-                android:textSize="20sp"
+                android:textAppearance="@style/Base.TextAppearance.AppCompat.Medium"
                 android:textColor="#000000"
                 android:text="Tour Itinerary Created for"/>
 
@@ -108,8 +108,8 @@
                 android:layout_height="wrap_content"
                 android:id="@+id/TIfor"
                 android:layout_marginTop="5dp"
-                android:layout_marginStart="16dp"
-                android:textSize="18sp"
+                android:layout_marginStart="12dp"
+                android:textAppearance="@style/Base.TextAppearance.AppCompat.Small"
                 android:textAllCaps="true"
                 android:text="Arun Kumar Panda"/>
 
@@ -119,7 +119,7 @@
                 android:id="@+id/head_contact"
                 android:layout_marginTop="10dp"
                 android:layout_marginStart="12dp"
-                android:textSize="20sp"
+                android:textAppearance="@style/Base.TextAppearance.AppCompat.Medium"
                 android:textColor="#000000"
                 android:text="Contact No."/>
 
@@ -127,7 +127,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="5dp"
-                android:layout_marginStart="16dp"
+                android:layout_marginStart="12dp"
                 android:layout_marginEnd="60dp"
                 android:inputType="number"
                 android:id="@+id/contacts"
@@ -139,17 +139,17 @@
                 android:id="@+id/head_preferredname"
                 android:layout_marginTop="10dp"
                 android:layout_marginStart="12dp"
-                android:textSize="20sp"
+                android:textAppearance="@style/Base.TextAppearance.AppCompat.Medium"
                 android:textColor="#000000"
-                android:text="Preferred Name for Ticket \nBooking"/>
+                android:text="Preferred Name for Ticket Booking"/>
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:id="@+id/preferredname"
                 android:layout_marginTop="5dp"
-                android:layout_marginStart="16dp"
-                android:textSize="18sp"
+                android:layout_marginStart="12dp"
+                android:textAppearance="@style/Base.TextAppearance.AppCompat.Small"
                 android:textAllCaps="true"
                 android:text="Arun Kumar Panda"/>
 
@@ -159,7 +159,7 @@
                 android:id="@+id/head_traveltype"
                 android:layout_marginTop="10dp"
                 android:layout_marginStart="12dp"
-                android:textSize="20sp"
+                android:textAppearance="@style/Base.TextAppearance.AppCompat.Medium"
                 android:textColor="#000000"
                 android:text="Type of Travel"/>
 
@@ -167,7 +167,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="5dp"
-                android:layout_marginStart="16dp"
+                android:layout_marginStart="12dp"
                 android:layout_marginEnd="60dp"
                 android:id="@+id/traveltype_spinner"
                 android:popupElevation="3dp"
@@ -180,7 +180,7 @@
                 android:id="@+id/head_dept"
                 android:layout_marginTop="10dp"
                 android:layout_marginStart="12dp"
-                android:textSize="20sp"
+                android:textAppearance="@style/Base.TextAppearance.AppCompat.Medium"
                 android:textColor="#000000"
                 android:text="Dep./Loc."/>
 
@@ -189,8 +189,8 @@
                 android:layout_height="wrap_content"
                 android:id="@+id/dept"
                 android:layout_marginTop="5dp"
-                android:layout_marginStart="16dp"
-                android:textSize="18sp"
+                android:layout_marginStart="12dp"
+                android:textAppearance="@style/Base.TextAppearance.AppCompat.Small"
                 android:text="10107104 Inform Syst Dept. Technical"/>
 
             <TextView
@@ -199,7 +199,7 @@
                 android:id="@+id/head_authority"
                 android:layout_marginTop="10dp"
                 android:layout_marginStart="12dp"
-                android:textSize="20sp"
+                android:textAppearance="@style/Base.TextAppearance.AppCompat.Medium"
                 android:textColor="#000000"
                 android:text="Approving Authority"/>
 
@@ -208,8 +208,8 @@
                 android:layout_height="wrap_content"
                 android:id="@+id/authority"
                 android:layout_marginTop="5dp"
-                android:layout_marginStart="16dp"
-                android:textSize="18sp"
+                android:layout_marginStart="12dp"
+                android:textAppearance="@style/Base.TextAppearance.AppCompat.Small"
                 android:text="V Devadas"
                 android:textAllCaps="true"/>
 

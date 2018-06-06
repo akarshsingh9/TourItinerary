@@ -1,5 +1,112 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent" android:layout_height="match_parent">
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:id="@+id/parentlayout"
+    android:layout_marginBottom="8dp"
+  >
+<RelativeLayout
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginBottom="10dp"
+    android:layout_marginTop="12dp"
+    android:id="@+id/header_info"
+    android:layout_marginStart="12dp">
+
+    <ImageView
+    android:layout_width="48dp"
+    android:layout_height="48dp"
+    android:src="@drawable/ic_train_round"
+    android:id="@+id/train_icon"
+    />
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="21-Jun-2018, Time: 21:45 hrs"
+        android:textAppearance="@style/Base.TextAppearance.AppCompat.Small"
+        android:layout_toEndOf="@id/train_icon"
+        android:layout_marginStart="8dp"
+        android:id="@+id/dateTime"
+        android:layout_alignBaseline="@id/train_icon"
+        />
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/ti_num"
+        android:layout_below="@id/dateTime"
+        android:text="2016_0000123"
+        android:layout_toRightOf="@id/train_icon"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="5dp"
+        android:textAppearance="@style/Base.TextAppearance.AppCompat.Medium"
+        android:textColor="#000000"/>
+
+</RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/collapsable_info"
+        android:visibility="gone"
+        android:layout_below="@id/header_info">
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:id="@+id/ll1"
+            android:layout_marginStart="65dp">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/from_header"
+            android:textStyle="bold"
+            android:text="From"/>
+
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/to_header"
+            android:textStyle="bold"
+            android:text="To"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/purpose_header"
+
+            android:textStyle="bold"
+            android:text="Purpose"/>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:id="@+id/ll2"
+            android:layout_toEndOf="@id/ll1"
+            android:layout_marginStart="10dp">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/from_source"
+
+            android:text="Vishakapatnam"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/to_destination"
+            android:text="Mumbai"/>
+
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/purpose_text"
+            android:text="Going for meeting"/>
+        </LinearLayout>
+    </RelativeLayout>
 
 </RelativeLayout>

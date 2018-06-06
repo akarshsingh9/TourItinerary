@@ -3,6 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".addTI">
 
 <android.support.v7.widget.CardView
@@ -123,12 +124,14 @@
 
 </android.support.v7.widget.CardView>
 
-   <android.support.v7.widget.RecyclerView
-       android:layout_width="match_parent"
-       android:layout_height="wrap_content"
-       android:id="@+id/ti_created_recyclerview"
-       android:layout_below="@id/officer_cardView"
-       android:layout_marginTop="12dp"/>
+       <android.support.v7.widget.RecyclerView
+           android:layout_width="match_parent"
+           android:layout_height="wrap_content"
+           android:id="@+id/ti_created_recyclerview"
+           android:layout_below="@id/officer_cardView"
+           android:layout_marginTop="12dp"/>
+
+
 
     <android.support.design.widget.FloatingActionButton
         android:layout_width="wrap_content"
