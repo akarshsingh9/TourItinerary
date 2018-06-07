@@ -12,7 +12,8 @@ import android.widget.Button;
 * 2 Buttons are:-
 * CreateTI - This will help you to create Tour Itinerary
 * ListTI - This will list all your TI's according to the TI number. Will also show status and name of the officer
-* Intent passed to another activity when CreateTI and ListTI is pressed*/
+* Intent passed to another activity when CreateTI and ListTI is pressed
+* */
 
 
 public class MainActivity extends AppCompatActivity {

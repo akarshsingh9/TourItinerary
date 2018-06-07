@@ -1,10 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
+
+<FrameLayout xmlns:tools="http://schemas.android.com/tools"
+    xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    tools:context=".addTI">
+    android:id="@+id/parentactivitylayout">
+
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:id="@+id/reslayout"
+    >
 
 <android.support.v7.widget.CardView
     android:layout_width="match_parent"
@@ -143,5 +150,11 @@
         android:layout_alignParentBottom="true"
         android:layout_marginBottom="22dp"
         />
-
+<!--
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/addTIForm_fragment"/>
+-->
 </RelativeLayout>
+</FrameLayout>

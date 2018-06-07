@@ -31,6 +31,8 @@ public class ListTI extends AppCompatActivity {
         listTI_recyclerView.addItemDecoration(new DividerItemDecoration(listTI_recyclerView.getContext(),DividerItemDecoration.VERTICAL));
 
         List<listTI_modelClass> modelClassList = new ArrayList<listTI_modelClass>();
+
+        //Static details added, TODO: retrieve from another JSON file which has submitted TI list and add it here
         modelClassList.add(new listTI_modelClass("Arun Kumar Panda","2016_0000123","Submitted"));
         modelClassList.add(new listTI_modelClass("Mohan Lal","2016_0000345","Accepted"));
         modelClassList.add(new listTI_modelClass("K. Narayan Subramanium","2016_0000567","Pending"));

@@ -82,7 +82,6 @@ public class addTI_recyclerAdapter extends RecyclerView.Adapter<addTI_recyclerAd
         ImageView travelmode;
         RelativeLayout header_infolayout;
         RelativeLayout collapsable_layout;
-        RecyclerView recyclerView;
 
         public ViewHolder(View view)
         {
@@ -95,7 +94,7 @@ public class addTI_recyclerAdapter extends RecyclerView.Adapter<addTI_recyclerAd
             travelmode = (ImageView)view.findViewById(R.id.train_icon);
             header_infolayout = (RelativeLayout)view.findViewById(R.id.header_info);
             collapsable_layout =(RelativeLayout)view.findViewById(R.id.collapsable_info);
-            recyclerView = (RecyclerView)view.findViewById(R.id.ti_created_recyclerview);
+
         }
 
 

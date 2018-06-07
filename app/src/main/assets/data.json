@@ -1,6 +1,53 @@
-{
-  "tino":["2016_1234","2016_1235","2016_1236"],
-  "enterby":["Arun Kumar Panda (31919150)", "Kishore Kumar (31919152)", "Mohan Lal (31919151)"],
-  "dept":["10107104 Inform Syst Dept. Technical", "10107105 Legal","10107104 Inform Syst Dept. Technical"],
-  "approveby": ["V Devadas","V Sharma","V Devadas"]
+﻿{
+  "array": {
+    "ti_no":[
+      "2016_0000123",
+      "2016_0000344",
+      "2016_0000456"],
+    "enterby":[
+      "Arun Kumar Panda (31919150)",
+      "Mohan Lal (31919151)",
+      "AK Mishra Sharma (31919152)"],
+    "traveltype":[
+      "Travel for Meeting",
+      "Travel for Training",
+      "Other Purpose"],
+    "approveby":{
+      "Arun Kumar Panda (31919150)": "V Devadas",
+      "Mohan Lal (31919151)":"SK Narayan",
+      "AK Mishra Sharma (31919152)":"Prabu Srivastava"
+    },
+    "from":[
+      "Delhi",
+      "Ahmedabad",
+      "Mumbai",
+      "Kolkata",
+      "Chennai",
+      "Vishakapatnam",
+      "Patna",
+      "Ranchi",
+      "Dhanbad",
+      "Bhuvneswar",
+      "Banglore",
+      "Amritsar",
+      "Gangtok",
+      "Gurgaon",
+      "Gandhinagar"],
+    "to":["Delhi",
+      "Ahmedabad",
+      "Mumbai",
+      "Kolkata",
+      "Chennai",
+      "Vishakapatnam",
+      "Patna",
+      "Ranchi",
+      "Dhanbad",
+      "Bhuvneswar",
+      "Banglore",
+      "Amritsar",
+      "Gangtok",
+      "Gurgaon",
+      "Gandhinagar"
+    ]
+  }
 }

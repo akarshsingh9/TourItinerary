@@ -3,4 +3,7 @@
     <string name="createTI">Create TI</string>
     <string name="listTI">List TI</string>
     <string name="title_activity_create_ti">Create TI</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>
