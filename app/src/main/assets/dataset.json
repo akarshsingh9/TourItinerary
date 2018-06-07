@@ -1,0 +1,45 @@
+﻿{
+  "array":[
+{
+  "emp_no":"31919150",
+  "emp_name":"ARUN KUMAR PANDA",
+  "emp_grade":"10E",
+  "emp_designation":"Ch. Manager-Development",
+  "emp_bu":"10107104",
+  "emp_budesc":"Inform Syst Dept. Technical",
+  "ro_emp_no":"30061820",
+  "email":"arun.panda@hpcl.in",
+  "emp_basicpay":"145510",
+  "contact_no":"null",
+  "ro_name":"SAUMITRA DATTA",
+  "ro_grade":"10F"},
+
+    {
+      "emp_no":"31919151",
+      "emp_name":"MOHAN LAL",
+      "emp_grade":"10D",
+      "emp_designation":"Developer",
+      "emp_bu":"10107104",
+      "emp_budesc":"Inform Syst Dept. Technical",
+      "ro_emp_no":"30061820",
+      "email":"mohan.lal@hpcl.in",
+      "emp_basicpay":"145510",
+      "contact_no":"null",
+      "ro_name":"ARUN KUMAR PANDA",
+      "ro_grade":"10E"},
+
+    {
+      "emp_no":"31919152",
+      "emp_name":"AK MISHRA",
+      "emp_grade":"10E",
+      "emp_designation":"Manager-Finance",
+      "emp_bu":"23407104",
+      "emp_budesc":"Finance and Communication",
+      "ro_emp_no":"30061820",
+      "email":"arun.panda@hpcl.in",
+      "emp_basicpay":"145510",
+      "contact_no":"null",
+      "ro_name":"V DEVDAS",
+      "ro_grade":"10F"}
+]
+}

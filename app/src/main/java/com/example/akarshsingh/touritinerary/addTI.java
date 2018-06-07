@@ -27,6 +27,16 @@ public class addTI extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_ti);
+
+        //get Intent
+        Intent intent = getIntent();
+        String tino = intent.getStringExtra("tino");
+        String officername = intent.getStringExtra("officername");
+        String contactno = intent.getStringExtra("contactno");
+        String status = intent.getStringExtra("status");
+        String dept = intent.getStringExtra("dept");
+        String approvingauth = intent.getStringExtra("approvingauth");
+
         //ActionBar
         ActionBar actionBar = getSupportActionBar();
         actionBar.setDisplayHomeAsUpEnabled(true);
@@ -37,6 +47,9 @@ public class addTI extends AppCompatActivity {
         ticreated_recyclerview = (RecyclerView)findViewById(R.id.ti_created_recyclerview);
         res_layout = (RelativeLayout)findViewById(R.id.reslayout);
 
+        //cardview details changes
+
+
         // recyclerview initialization
         ticreated_recyclerview.setHasFixedSize(true);
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(this);
@@ -44,11 +57,11 @@ public class addTI extends AppCompatActivity {
 
         // arraylist TODO: Retrieve details from addTI_Form Activity and add it here
         List<addTI_recyclermodel> recyclermodelList = new ArrayList<addTI_recyclermodel>();
-        recyclermodelList.add(new addTI_recyclermodel("2016_0000123","Mumbai","Delhi",R.drawable.ic_train_round));
-        recyclermodelList.add(new addTI_recyclermodel("2016_0000124","Ahmedabad","Delhi",R.drawable.ic_train_round));
-        recyclermodelList.add(new addTI_recyclermodel("2016_0000125","kolkalta","Delhi",R.drawable.ic_flight_round));
-        recyclermodelList.add(new addTI_recyclermodel("2016_0000126","Chennai","Delhi",R.drawable.ic_train_round));
-        recyclermodelList.add(new addTI_recyclermodel("2016_0000127","Pune","Delhi",R.drawable.ic_flight_round));
+        recyclermodelList.add(new addTI_recyclermodel(tino,"Mumbai","Delhi",R.drawable.ic_train_round));
+        recyclermodelList.add(new addTI_recyclermodel(tino,"Ahmedabad","Delhi",R.drawable.ic_train_round));
+        recyclermodelList.add(new addTI_recyclermodel(tino,"kolkalta","Delhi",R.drawable.ic_flight_round));
+        recyclermodelList.add(new addTI_recyclermodel(tino,"Chennai","Delhi",R.drawable.ic_train_round));
+        recyclermodelList.add(new addTI_recyclermodel(tino,"Pune","Delhi",R.drawable.ic_flight_round));
 
         // horizontal line after each list item
         ticreated_recyclerview.addItemDecoration(new DividerItemDecoration(ticreated_recyclerview.getContext(),DividerItemDecoration.VERTICAL));
