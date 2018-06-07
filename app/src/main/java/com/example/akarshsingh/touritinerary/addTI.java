@@ -12,6 +12,7 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.widget.RelativeLayout;
+import android.widget.TextView;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -22,6 +23,7 @@ public class addTI extends AppCompatActivity {
     FloatingActionButton add_fab;
     RecyclerView ticreated_recyclerview;
     RelativeLayout res_layout;
+    TextView summaryName, summaryContacts, summaryStatus, summaryDept, summaryApproveAuth;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -46,9 +48,20 @@ public class addTI extends AppCompatActivity {
         add_fab = (FloatingActionButton)findViewById(R.id.add_fab);
         ticreated_recyclerview = (RecyclerView)findViewById(R.id.ti_created_recyclerview);
         res_layout = (RelativeLayout)findViewById(R.id.reslayout);
+        summaryApproveAuth = (TextView)findViewById(R.id.summary_auth);
+        summaryName = (TextView)findViewById(R.id.summary_name);
+        summaryContacts = (TextView)findViewById(R.id.summary_contact);
+        summaryStatus = (TextView)findViewById(R.id.summary_status);
+        summaryDept = (TextView)findViewById(R.id.summary_dept);
+
+
 
         //cardview details changes
-
+        summaryName.setText(officername);
+        summaryDept.setText(dept);
+        summaryStatus.setText(status);
+        summaryApproveAuth.setText(approvingauth);
+        summaryContacts.setText(contactno);
 
         // recyclerview initialization
         ticreated_recyclerview.setHasFixedSize(true);
