@@ -1,6 +1,9 @@
 package com.example.akarshsingh.touritinerary;
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
+import android.preference.PreferenceManager;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.ActionBar;
@@ -24,20 +27,26 @@ public class addTI extends AppCompatActivity {
     RecyclerView ticreated_recyclerview;
     RelativeLayout res_layout;
     TextView summaryName, summaryContacts, summaryStatus, summaryDept, summaryApproveAuth;
+    String tino,from,to,date,time,purpose,travelmode;
+
+    public int clickCounter = 0;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_ti);
 
-        //get Intent
-        Intent intent = getIntent();
-        String tino = intent.getStringExtra("tino");
-        String officername = intent.getStringExtra("officername");
-        String contactno = intent.getStringExtra("contactno");
-        String status = intent.getStringExtra("status");
-        String dept = intent.getStringExtra("dept");
-        String approvingauth = intent.getStringExtra("approvingauth");
+        //get SharedPref
+        final SharedPreferences preferences = getApplicationContext().getSharedPreferences("MyPref",Context.MODE_PRIVATE);
+        tino = preferences.getString("tino",null);
+        String officername = preferences.getString("officername",null);
+        String contactno = preferences.getString("contactno",null);
+        String status = preferences.getString("status",null);
+        String dept = preferences.getString("dept",null);
+        String approvingauth = preferences.getString("approvingauth",null);
+
+
 
         //ActionBar
         ActionBar actionBar = getSupportActionBar();
@@ -68,6 +77,7 @@ public class addTI extends AppCompatActivity {
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(this);
         ticreated_recyclerview.setLayoutManager(linearLayoutManager);
 
+
         // arraylist TODO: Retrieve details from addTI_Form Activity and add it here
         List<addTI_recyclermodel> recyclermodelList = new ArrayList<addTI_recyclermodel>();
         recyclermodelList.add(new addTI_recyclermodel(tino,"Mumbai","Delhi",R.drawable.ic_train_round));
@@ -75,7 +85,6 @@ public class addTI extends AppCompatActivity {
         recyclermodelList.add(new addTI_recyclermodel(tino,"kolkalta","Delhi",R.drawable.ic_flight_round));
         recyclermodelList.add(new addTI_recyclermodel(tino,"Chennai","Delhi",R.drawable.ic_train_round));
         recyclermodelList.add(new addTI_recyclermodel(tino,"Pune","Delhi",R.drawable.ic_flight_round));
-
         // horizontal line after each list item
         ticreated_recyclerview.addItemDecoration(new DividerItemDecoration(ticreated_recyclerview.getContext(),DividerItemDecoration.VERTICAL));
 
@@ -89,8 +98,6 @@ public class addTI extends AppCompatActivity {
             public void onClick(View v) {
                 Intent intent = new Intent(addTI.this, addTI_Form.class);
                 startActivity(intent);
-
-
             }
         });
 
@@ -103,6 +110,5 @@ public class addTI extends AppCompatActivity {
         finish();
         return true;
     }
-
 
 }

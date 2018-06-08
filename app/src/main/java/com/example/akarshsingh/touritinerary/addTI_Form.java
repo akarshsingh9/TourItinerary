@@ -3,13 +3,17 @@ package com.example.akarshsingh.touritinerary;
 import android.app.DatePickerDialog;
 import android.app.Dialog;
 import android.app.TimePickerDialog;
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.support.annotation.NonNull;
 import android.support.annotation.StringRes;
 import android.support.design.widget.FloatingActionButton;
+import android.support.v4.app.INotificationSideChannel;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.text.TextUtils;
 import android.view.View;
 import android.view.Window;
 import android.widget.ArrayAdapter;
@@ -20,6 +24,7 @@ import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.TimePicker;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.Calendar;
@@ -28,9 +33,10 @@ import java.util.List;
 public class addTI_Form extends AppCompatActivity {
 
     Button setbtn,setbtn1;
-    EditText timedept,datedept;
+    EditText timedept,datedept,purposeEditText;
     Spinner travelmode,fromspinner, tospinner;
     FloatingActionButton submitfab;
+    SharedPreferences preferences;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -49,6 +55,7 @@ public class addTI_Form extends AppCompatActivity {
         fromspinner = (Spinner)findViewById(R.id.from_spinner);
         tospinner = (Spinner)findViewById(R.id.to_spinner);
         submitfab = (FloatingActionButton)findViewById(R.id.submit_fab);
+        purposeEditText = (EditText)findViewById(R.id.purpose);
 
         //travel mode spinner
         List<String> travelmode_list = new ArrayList<String>();
@@ -103,28 +110,39 @@ public class addTI_Form extends AppCompatActivity {
         setbtn1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                final Calendar calendar = Calendar.getInstance();
-                int mMinute = calendar.get(calendar.MINUTE);
-                int mHour = calendar.get(calendar.HOUR_OF_DAY);
+                if (TextUtils.equals(travelmode.getSelectedItem().toString(),"Flight"))
+                {
+                    final Calendar calendar = Calendar.getInstance();
+                    int mMinute = calendar.get(calendar.MINUTE);
+                    int mHour = calendar.get(calendar.HOUR_OF_DAY);
 
-                TimePickerDialog timePickerDialog = new TimePickerDialog(addTI_Form.this, new TimePickerDialog.OnTimeSetListener() {
-                    @Override
-                    public void onTimeSet(TimePicker view, int hourOfDay, int minute) {
-                        timedept.setText(""+hourOfDay+":"+""+minute);
-                    }
+                    TimePickerDialog timePickerDialog = new TimePickerDialog(addTI_Form.this, new TimePickerDialog.OnTimeSetListener() {
+                        @Override
+                        public void onTimeSet(TimePicker view, int hourOfDay, int minute) {
+                            timedept.setText(""+hourOfDay+":"+""+minute);
+                        }
                     },mHour,mMinute,false);
 
-                timePickerDialog.show();
-            }
+                    timePickerDialog.show();
+
+                }
+                else
+                {
+                    Toast.makeText(addTI_Form.this,"Applicable only on Flight",Toast.LENGTH_SHORT).show();
+                }
+                            }
 
         });
 
         submitfab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent submit_intent = new Intent(addTI_Form.this,addTI.class);
-                startActivity(submit_intent);
+
+
+                Intent intent = new Intent(addTI_Form.this,addTI.class);
+                startActivity(intent);
             }
+
         });
 
 

@@ -1,6 +1,8 @@
 package com.example.akarshsingh.touritinerary;
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -30,11 +32,12 @@ import java.util.List;
 
 public class CreateTI extends AppCompatActivity {
 
+    SharedPreferences sharedPreferences;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_create_ti);
-        //TODO: pass fields on intent
+        //TODO: pass fields on using SharedPreference
     //**************************************************************************************************************
         final TextView tino = (TextView)findViewById(R.id.tino);
         final TextView approvename = (TextView)findViewById(R.id.authority);
@@ -122,12 +125,15 @@ public class CreateTI extends AppCompatActivity {
                 }
                 else {
                     Intent travel_intent = new Intent(CreateTI.this, addTI.class);
-                    travel_intent.putExtra("tino",tino.getText().toString());
-                    travel_intent.putExtra("officername",enterby_spinner.getSelectedItem().toString());
-                    travel_intent.putExtra("contactno",contacts.getText().toString());
-                    travel_intent.putExtra("status",status.getText().toString());
-                    travel_intent.putExtra("dept",dept.getText().toString());
-                    travel_intent.putExtra("approvingauth",approvename.getText().toString());
+                    sharedPreferences = getApplication().getSharedPreferences("MyPref",Context.MODE_PRIVATE);
+                    SharedPreferences.Editor editor = sharedPreferences.edit();
+                    editor.putString("tino",tino.getText().toString());
+                    editor.putString("officername",enterby_spinner.getSelectedItem().toString());
+                    editor.putString("contactno",contacts.getText().toString());
+                    editor.putString("status",status.getText().toString());
+                    editor.putString("dept",dept.getText().toString());
+                    editor.putString("approvingauth",approvename.getText().toString());
+                    editor.apply();
                     startActivity(travel_intent);
                 }
             }

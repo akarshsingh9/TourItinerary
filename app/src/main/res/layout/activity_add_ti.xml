@@ -132,7 +132,8 @@
            android:layout_height="wrap_content"
            android:id="@+id/ti_created_recyclerview"
            android:layout_below="@id/officer_cardView"
-           android:layout_marginTop="12dp"/>
+           android:layout_marginTop="12dp"
+           />
 
 
 
