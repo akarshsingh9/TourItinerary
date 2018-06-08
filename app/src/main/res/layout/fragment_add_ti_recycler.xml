@@ -1,0 +1,154 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:tools="http://schemas.android.com/tools"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:id="@+id/reslayout2"
+    >
+
+    <android.support.v7.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/cardView2"
+        >
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:id="@+id/enclosing_layout2">
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/nameHeader_layout2">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Arun Kumar Panda (31919150)"
+                    android:textAllCaps="true"
+                    android:textColor="#000000"
+                    android:textSize="18sp"
+                    android:layout_marginTop="12dp"
+                    android:layout_marginStart="12dp"
+                    android:layout_marginBottom="8dp"
+                    android:id="@+id/name2"
+                    />
+            </RelativeLayout>
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/expand_officerInfo2"
+                android:layout_below="@id/nameHeader_layout2">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/contacthead2"
+                    android:layout_marginStart="12dp"
+                    android:textSize="16sp"
+                    android:textStyle="bold"
+                    android:text="Contact No"/>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/contact2"
+                    android:layout_marginStart="16dp"
+                    android:textSize="16sp"
+                    android:layout_toEndOf="@id/contacthead2"
+                    android:text="9173548223"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/depthead2"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginStart="12dp"
+                    android:layout_below="@id/contacthead2"
+                    android:textSize="16sp"
+                    android:textStyle="bold"
+                    android:text="Dept"/>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/dept2"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginStart="16dp"
+                    android:layout_below="@id/contact2"
+                    android:textSize="16sp"
+                    android:layout_toEndOf="@id/contacthead2"
+                    android:text="Inform Syst Dept. Technical"/>
+
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/statushead2"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginStart="12dp"
+                    android:layout_below="@id/depthead2"
+                    android:textSize="16sp"
+                    android:textStyle="bold"
+                    android:text="Status"/>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/status2"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginStart="16dp"
+                    android:layout_below="@id/dept2"
+                    android:textSize="16sp"
+                    android:layout_toEndOf="@id/contacthead2"
+                    android:text="Saved as Draft"/>
+
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/authhead2"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginStart="12dp"
+                    android:layout_below="@id/statushead2"
+                    android:textSize="16sp"
+                    android:textStyle="bold"
+                    android:text="Approving \nAuthority"
+                    android:layout_marginBottom="12dp"/>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/auth2"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginStart="16dp"
+                    android:layout_below="@id/status2"
+                    android:textSize="16sp"
+                    android:layout_toEndOf="@id/contacthead2"
+                    android:text="V Devdas"/>
+            </RelativeLayout>
+        </RelativeLayout>
+
+    </android.support.v7.widget.CardView>
+
+
+    <android.support.v7.widget.RecyclerView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/recyclerview2"
+        android:layout_below="@id/cardView2"
+        android:layout_marginTop="12dp"
+        />
+<Button
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:id="@+id/addmore"
+    android:layout_below="@id/recyclerview2"
+    android:text="add more"/>
+
+    <android.support.design.widget.FloatingActionButton
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/ic_baseline_done_24px"
+        android:id="@+id/add_fab2"
+        android:layout_alignParentEnd="true"
+        android:layout_marginEnd="16dp"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="22dp"
+        />
+
+
+</RelativeLayout>

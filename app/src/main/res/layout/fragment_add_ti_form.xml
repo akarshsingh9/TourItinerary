@@ -1,0 +1,176 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+   >
+
+
+    <android.support.v7.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/form_header_cardView_frag"
+        >
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Arun Kumar Panda (31919150)"
+            android:textAllCaps="true"
+            android:textColor="#000000"
+            android:textSize="18sp"
+            android:layout_marginTop="12dp"
+            android:layout_marginStart="12dp"
+            android:layout_marginBottom="8dp"
+            android:id="@+id/form_header_name_frag"
+            />
+    </android.support.v7.widget.CardView>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@id/form_header_cardView_frag"
+        android:orientation="vertical">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/head_from_frag"
+            android:layout_marginTop="10dp"
+            android:layout_marginStart="12dp"
+            android:textSize="20sp"
+            android:textColor="#000000"
+            android:text="From"/>
+
+        <Spinner
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginEnd="60dp"
+            android:id="@+id/from_spinner_frag"
+            android:popupElevation="3dp"
+            android:elevation="3dp"
+            />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/head_to_frag"
+            android:layout_marginTop="10dp"
+            android:layout_marginStart="12dp"
+            android:textSize="20sp"
+            android:textColor="#000000"
+            android:text="To"/>
+
+        <Spinner
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginEnd="60dp"
+            android:id="@+id/to_spinner_frag"
+            android:popupElevation="3dp"
+            android:elevation="3dp"
+            />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/head_travelmode_frag"
+            android:layout_marginTop="10dp"
+            android:layout_marginStart="12dp"
+            android:textSize="20sp"
+            android:textColor="#000000"
+            android:text="Travel Mode"/>
+
+        <Spinner
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginEnd="60dp"
+            android:id="@+id/travelmode_spinner_frag"
+            android:popupElevation="3dp"
+            android:elevation="3dp"
+            />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/head_deptdate_frag"
+            android:layout_marginTop="10dp"
+            android:layout_marginStart="12dp"
+            android:textSize="20sp"
+            android:textColor="#000000"
+            android:text="Departure Date"/>
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="12dp"
+                android:id="@+id/datedept_frag"
+                />
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="22dp"
+                android:text="set"
+                android:id="@+id/setbtn_frag"/>
+        </LinearLayout>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/head_preftime_frag"
+            android:layout_marginTop="10dp"
+            android:layout_marginStart="12dp"
+            android:textSize="20sp"
+            android:textColor="#000000"
+            android:text="Pref. Time"/>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginTop="10dp">
+
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="12dp"
+                android:id="@+id/timedept_frag"
+                />
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="22dp"
+                android:text="set"
+                android:id="@+id/setbtn1_frag"/>
+        </LinearLayout>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/head_purpose_frag"
+            android:layout_marginTop="10dp"
+            android:layout_marginStart="12dp"
+            android:textSize="20sp"
+            android:textColor="#000000"
+            android:text="Purpose"/>
+
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="12dp"
+            android:layout_marginEnd="60dp"
+            android:id="@+id/purpose_frag"/>
+
+    </LinearLayout>
+    <android.support.design.widget.FloatingActionButton
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginEnd="20dp"
+        android:layout_marginBottom="20dp"
+        android:src="@drawable/ic_baseline_done_24px"
+        android:id="@+id/submit_fab_frag"
+        />
+</RelativeLayout>

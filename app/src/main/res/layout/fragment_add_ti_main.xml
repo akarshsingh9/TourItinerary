@@ -1,0 +1,142 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:tools="http://schemas.android.com/tools"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:id="@+id/reslayout1"
+    >
+
+    <android.support.v7.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/cardView1"
+        >
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:id="@+id/enclosing_layout1">
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/nameHeader_layout1">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Arun Kumar Panda (31919150)"
+                    android:textAllCaps="true"
+                    android:textColor="#000000"
+                    android:textSize="18sp"
+                    android:layout_marginTop="12dp"
+                    android:layout_marginStart="12dp"
+                    android:layout_marginBottom="8dp"
+                    android:id="@+id/name1"
+                    />
+            </RelativeLayout>
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/expand_officerInfo1"
+                android:layout_below="@id/nameHeader_layout1">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/contacthead1"
+                    android:layout_marginStart="12dp"
+                    android:textSize="16sp"
+                    android:textStyle="bold"
+                    android:text="Contact No"/>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/contact1"
+                    android:layout_marginStart="16dp"
+                    android:textSize="16sp"
+                    android:layout_toEndOf="@id/contacthead1"
+                    android:text="9173548223"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/depthead1"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginStart="12dp"
+                    android:layout_below="@id/contacthead1"
+                    android:textSize="16sp"
+                    android:textStyle="bold"
+                    android:text="Dept"/>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/dept1"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginStart="16dp"
+                    android:layout_below="@id/contact1"
+                    android:textSize="16sp"
+                    android:layout_toEndOf="@id/contacthead1"
+                    android:text="Inform Syst Dept. Technical"/>
+
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/statushead1"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginStart="12dp"
+                    android:layout_below="@id/depthead1"
+                    android:textSize="16sp"
+                    android:textStyle="bold"
+                    android:text="Status"/>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/status1"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginStart="16dp"
+                    android:layout_below="@id/dept1"
+                    android:textSize="16sp"
+                    android:layout_toEndOf="@id/contacthead1"
+                    android:text="Saved as Draft"/>
+
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/authhead1"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginStart="12dp"
+                    android:layout_below="@id/statushead1"
+                    android:textSize="16sp"
+                    android:textStyle="bold"
+                    android:text="Approving \nAuthority"
+                    android:layout_marginBottom="12dp"/>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/auth1"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginStart="16dp"
+                    android:layout_below="@id/status1"
+                    android:textSize="16sp"
+                    android:layout_toEndOf="@id/contacthead1"
+                    android:text="V Devdas"/>
+            </RelativeLayout>
+        </RelativeLayout>
+
+    </android.support.v7.widget.CardView>
+
+
+
+
+    <android.support.design.widget.FloatingActionButton
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/ic_outline_add_24px"
+        android:id="@+id/add_fab1"
+        android:layout_alignParentEnd="true"
+        android:layout_marginEnd="16dp"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="22dp"
+        />
+
+
+</RelativeLayout>
