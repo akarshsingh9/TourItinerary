@@ -26,6 +26,9 @@ import android.widget.TextView;
 import android.widget.TimePicker;
 import android.widget.Toast;
 
+import org.json.JSONArray;
+import org.json.JSONObject;
+
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.List;
@@ -38,6 +41,7 @@ public class addTI_Form extends AppCompatActivity {
     FloatingActionButton submitfab;
     SharedPreferences preferences;
 
+    public int counterRecieved;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -138,8 +142,16 @@ public class addTI_Form extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
-
                 Intent intent = new Intent(addTI_Form.this,addTI.class);
+                intent.putExtra("flag",1);
+                intent.putExtra("from",fromspinner.getSelectedItem().toString());
+                intent.putExtra("to",tospinner.getSelectedItem().toString());
+                intent.putExtra("travelmode",travelmode.getSelectedItem().toString());
+                intent.putExtra("date",datedept.getText().toString());
+                intent.putExtra("time",timedept.getText().toString());
+                intent.putExtra("purpose",purposeEditText.getText().toString());
+
+
                 startActivity(intent);
             }
 
@@ -147,7 +159,6 @@ public class addTI_Form extends AppCompatActivity {
 
 
     }
-
 
     @Override
     public boolean onSupportNavigateUp(){

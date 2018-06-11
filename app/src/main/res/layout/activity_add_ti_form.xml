@@ -3,7 +3,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".addTI_Form">
+    tools:context=".addTI_Form"
+    android:id="@+id/reslayout3">
 
 
     <android.support.v7.widget.CardView

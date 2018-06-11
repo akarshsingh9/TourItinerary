@@ -13,6 +13,8 @@ import android.support.v7.widget.CardView;
 import android.support.v7.widget.DividerItemDecoration;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.text.TextUtils;
+import android.util.Log;
 import android.view.View;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
@@ -27,9 +29,10 @@ public class addTI extends AppCompatActivity {
     RecyclerView ticreated_recyclerview;
     RelativeLayout res_layout;
     TextView summaryName, summaryContacts, summaryStatus, summaryDept, summaryApproveAuth;
-    String tino,from,to,date,time,purpose,travelmode;
+    String tino,fromplace,toplace,travelmode,dateText,timeText,purposeText;
+    public int flag = 0;
 
-    public int clickCounter = 0;
+    DatabaseHelper helper;
 
 
     @Override
@@ -37,15 +40,15 @@ public class addTI extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_ti);
 
-        //get SharedPref
-        final SharedPreferences preferences = getApplicationContext().getSharedPreferences("MyPref",Context.MODE_PRIVATE);
-        tino = preferences.getString("tino",null);
-        String officername = preferences.getString("officername",null);
-        String contactno = preferences.getString("contactno",null);
-        String status = preferences.getString("status",null);
-        String dept = preferences.getString("dept",null);
-        String approvingauth = preferences.getString("approvingauth",null);
 
+        //get SharedPref
+        final SharedPreferences preferences = getApplicationContext().getSharedPreferences("MyPref", Context.MODE_PRIVATE);
+        tino = preferences.getString("tino", null);
+        String officername = preferences.getString("officername", null);
+        String contactno = preferences.getString("contactno", null);
+        String status = preferences.getString("status", null);
+        String dept = preferences.getString("dept", null);
+        String approvingauth = preferences.getString("approvingauth", null);
 
 
         //ActionBar
@@ -53,16 +56,15 @@ public class addTI extends AppCompatActivity {
         actionBar.setDisplayHomeAsUpEnabled(true);
 
         //view elements in the layout
-        officer_cardView = (CardView)findViewById(R.id.officer_cardView);
-        add_fab = (FloatingActionButton)findViewById(R.id.add_fab);
-        ticreated_recyclerview = (RecyclerView)findViewById(R.id.ti_created_recyclerview);
-        res_layout = (RelativeLayout)findViewById(R.id.reslayout);
-        summaryApproveAuth = (TextView)findViewById(R.id.summary_auth);
-        summaryName = (TextView)findViewById(R.id.summary_name);
-        summaryContacts = (TextView)findViewById(R.id.summary_contact);
-        summaryStatus = (TextView)findViewById(R.id.summary_status);
-        summaryDept = (TextView)findViewById(R.id.summary_dept);
-
+        officer_cardView = (CardView) findViewById(R.id.officer_cardView);
+        add_fab = (FloatingActionButton) findViewById(R.id.add_fab);
+        ticreated_recyclerview = (RecyclerView) findViewById(R.id.ti_created_recyclerview);
+        res_layout = (RelativeLayout) findViewById(R.id.reslayout);
+        summaryApproveAuth = (TextView) findViewById(R.id.summary_auth);
+        summaryName = (TextView) findViewById(R.id.summary_name);
+        summaryContacts = (TextView) findViewById(R.id.summary_contact);
+        summaryStatus = (TextView) findViewById(R.id.summary_status);
+        summaryDept = (TextView) findViewById(R.id.summary_dept);
 
 
         //cardview details changes
@@ -72,6 +74,17 @@ public class addTI extends AppCompatActivity {
         summaryApproveAuth.setText(approvingauth);
         summaryContacts.setText(contactno);
 
+        Intent intent = getIntent();
+        flag = intent.getIntExtra("flag", 0);
+        if (flag != 1) {
+            ticreated_recyclerview.setVisibility(View.GONE);
+        } else {
+            ticreated_recyclerview.setVisibility(View.VISIBLE);
+
+
+
+
+        }
         // recyclerview initialization
         ticreated_recyclerview.setHasFixedSize(true);
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(this);
@@ -79,29 +92,55 @@ public class addTI extends AppCompatActivity {
 
 
         // arraylist TODO: Retrieve details from addTI_Form Activity and add it here
-        List<addTI_recyclermodel> recyclermodelList = new ArrayList<addTI_recyclermodel>();
-        recyclermodelList.add(new addTI_recyclermodel(tino,"Mumbai","Delhi",R.drawable.ic_train_round));
-        recyclermodelList.add(new addTI_recyclermodel(tino,"Ahmedabad","Delhi",R.drawable.ic_train_round));
-        recyclermodelList.add(new addTI_recyclermodel(tino,"kolkalta","Delhi",R.drawable.ic_flight_round));
-        recyclermodelList.add(new addTI_recyclermodel(tino,"Chennai","Delhi",R.drawable.ic_train_round));
-        recyclermodelList.add(new addTI_recyclermodel(tino,"Pune","Delhi",R.drawable.ic_flight_round));
-        // horizontal line after each list item
-        ticreated_recyclerview.addItemDecoration(new DividerItemDecoration(ticreated_recyclerview.getContext(),DividerItemDecoration.VERTICAL));
+        fromplace = intent.getStringExtra("from");
+        toplace = intent.getStringExtra("to");
+        travelmode = intent.getStringExtra("travelmode");
+        dateText = intent.getStringExtra("date");
+        timeText = intent.getStringExtra("time");
+        purposeText = intent.getStringExtra("purpose");
 
+        int imageres;
+        if (TextUtils.equals(travelmode,"Flight"))
+        {
+            imageres = R.drawable.ic_flight_round;
+        }
+        else
+        {
+            imageres = R.drawable.ic_train_round;
+        }
+
+        helper = new DatabaseHelper(this);
+
+        List<travelInfoModelClass> recyclermodelList = new ArrayList<>();
+        long id = helper.insertTI(tino,fromplace,toplace,imageres,dateText,timeText,purposeText);
+        travelInfoModelClass travel = helper.getTravel(id);
+
+
+        // horizontal line after each list item
+        ticreated_recyclerview.addItemDecoration(new DividerItemDecoration(ticreated_recyclerview.getContext(), DividerItemDecoration.VERTICAL));
+        recyclermodelList.add(travel);
+        recyclermodelList.addAll(helper.getAllTravels());
         // attaching adapter to recycler
         addTI_recyclerAdapter addTI_recyclerAdapter = new addTI_recyclerAdapter(recyclermodelList);
+
+        addTI_recyclerAdapter.notifyDataSetChanged();
+
+
         ticreated_recyclerview.setAdapter(addTI_recyclerAdapter);
+
+
 
         //Floating Action Button click event
         add_fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
                 Intent intent = new Intent(addTI.this, addTI_Form.class);
                 startActivity(intent);
             }
         });
-
     }
+
 
     // Up button on ActionBar
     @Override
