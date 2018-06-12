@@ -133,17 +133,27 @@
            />
 
 
-
     <android.support.design.widget.FloatingActionButton
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:src="@drawable/ic_outline_add_24px"
         android:id="@+id/add_fab"
         android:layout_alignParentEnd="true"
-        android:layout_marginEnd="16dp"
+        android:layout_marginEnd="18dp"
         android:layout_alignParentBottom="true"
         android:layout_marginBottom="22dp"
         />
+
+    <android.support.design.widget.FloatingActionButton
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_alignStart="@+id/add_fab"
+        android:layout_marginTop="160dp"
+        android:backgroundTint="@color/darkgreen"
+        android:id="@+id/submitdb"
+        android:visibility="gone"
+        android:src="@drawable/ic_baseline_done_24px" />
 
 
 </RelativeLayout>
