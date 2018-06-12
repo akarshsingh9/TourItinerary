@@ -97,8 +97,10 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         // Select All Query
         String selectQuery = "SELECT  * FROM " + travelInfoModelClass.TABLE_NAME;
 
+
         SQLiteDatabase db = this.getWritableDatabase();
         Cursor cursor = db.rawQuery(selectQuery, null);
+
 
         // looping through all rows and adding to list
         if (cursor.moveToFirst()) {

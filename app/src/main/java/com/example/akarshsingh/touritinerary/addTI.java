@@ -112,16 +112,19 @@ public class addTI extends AppCompatActivity {
         helper = new DatabaseHelper(this);
 
         List<travelInfoModelClass> recyclermodelList = new ArrayList<>();
+        List<travelInfoModelClass> modelList = new ArrayList<>();
         long id = helper.insertTI(tino,fromplace,toplace,imageres,dateText,timeText,purposeText);
-        travelInfoModelClass travel = helper.getTravel(id);
+        //travelInfoModelClass travel = helper.getTravel(id);
 
 
         // horizontal line after each list item
         ticreated_recyclerview.addItemDecoration(new DividerItemDecoration(ticreated_recyclerview.getContext(), DividerItemDecoration.VERTICAL));
-        recyclermodelList.add(travel);
-        recyclermodelList.addAll(helper.getAllTravels());
+       // recyclermodelList.add(travel);
+        modelList.addAll(helper.getAllTravels());
+        modelList.remove(0);
+
         // attaching adapter to recycler
-        addTI_recyclerAdapter addTI_recyclerAdapter = new addTI_recyclerAdapter(recyclermodelList);
+        addTI_recyclerAdapter addTI_recyclerAdapter = new addTI_recyclerAdapter(modelList);
 
         addTI_recyclerAdapter.notifyDataSetChanged();
 
