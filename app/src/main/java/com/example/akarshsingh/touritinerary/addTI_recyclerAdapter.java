@@ -16,6 +16,8 @@ import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
+import android.widget.Toast;
+
 import com.example.akarshsingh.touritinerary.DatabaseHelper;
 
 import org.w3c.dom.Text;
@@ -25,6 +27,7 @@ import java.util.List;
 public class addTI_recyclerAdapter extends RecyclerView.Adapter<addTI_recyclerAdapter.ViewHolder> {
 
     List<travelInfoModelClass> travelInfoModelClassList;
+    Context c;
 
     public addTI_recyclerAdapter(List<travelInfoModelClass> travelInfoModelClassList)
     {
@@ -44,7 +47,7 @@ public class addTI_recyclerAdapter extends RecyclerView.Adapter<addTI_recyclerAd
     }
 
     @Override
-    public void onBindViewHolder(@NonNull final ViewHolder holder, int position) {
+    public void onBindViewHolder(@NonNull final ViewHolder holder, final int position) {
 
         holder.tinum.setText(travelInfoModelClassList.get(position).getTi_number());
         holder.fromplace.setText(travelInfoModelClassList.get(position).getFrom());
@@ -57,6 +60,13 @@ public class addTI_recyclerAdapter extends RecyclerView.Adapter<addTI_recyclerAd
 
 
         holder.collapsable_layout.setVisibility(View.GONE);
+
+        holder.delete.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                deleteTravel(v,position);
+            }
+        });
 
         holder.itemView.setOnClickListener(new View.OnClickListener() {
 
@@ -94,6 +104,7 @@ public class addTI_recyclerAdapter extends RecyclerView.Adapter<addTI_recyclerAd
         ImageView travelmode;
         RelativeLayout header_infolayout;
         RelativeLayout collapsable_layout;
+        ImageButton delete;
 
         public ViewHolder(View view)
         {
@@ -107,9 +118,33 @@ public class addTI_recyclerAdapter extends RecyclerView.Adapter<addTI_recyclerAd
             purposeTV = (TextView)view.findViewById(R.id.purpose_text);
             header_infolayout = (RelativeLayout)view.findViewById(R.id.header_info);
             collapsable_layout =(RelativeLayout)view.findViewById(R.id.collapsable_info);
-
+            delete = (ImageButton)view.findViewById(R.id.delete);
         }
 
+
+    }
+
+    public void deleteTravel(View view,int pos)
+    {
+        //GET ID
+        travelInfoModelClass p=travelInfoModelClassList.get(pos);
+        int id=p.getId();
+
+        c = view.getContext();
+        DatabaseHelper helper = new DatabaseHelper(c);
+        helper.getWritableDatabase();
+        if (helper.deletetravel(id))
+        {
+            this.notifyItemRangeChanged(pos,travelInfoModelClassList.size());
+            travelInfoModelClassList.remove(pos);
+        }
+        else
+        {
+            Toast.makeText(c,"Unable to delete",Toast.LENGTH_SHORT).show();
+        }
+        helper.close();
+
+        this.notifyItemRemoved(pos);
 
     }
 }

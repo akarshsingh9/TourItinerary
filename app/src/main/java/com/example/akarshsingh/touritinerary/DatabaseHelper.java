@@ -139,11 +139,20 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         return count;
     }
 
-    public void deletetravel(travelInfoModelClass travel) {
+    public boolean deletetravel(int id) {
         SQLiteDatabase db = this.getWritableDatabase();
-        db.delete(travelInfoModelClass.TABLE_NAME, travelInfoModelClass.COLUMN_ID + " = ?",
-                new String[]{String.valueOf(travel.getId())});
+        int result = db.delete(travelInfoModelClass.TABLE_NAME, travelInfoModelClass.COLUMN_ID + " = ?",
+                new String[]{String.valueOf(id)});
         db.close();
+        if (result>0)
+        {
+            return true;
+        }
+        else
+        {
+            return false;
+        }
+
     }
 
 }

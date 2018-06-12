@@ -119,16 +119,15 @@ public class addTI extends AppCompatActivity {
 
         // horizontal line after each list item
         ticreated_recyclerview.addItemDecoration(new DividerItemDecoration(ticreated_recyclerview.getContext(), DividerItemDecoration.VERTICAL));
-       // recyclermodelList.add(travel);
+
+
+        // recyclermodelList.add(travel);
         modelList.addAll(helper.getAllTravels());
         modelList.remove(0);
 
         // attaching adapter to recycler
         addTI_recyclerAdapter addTI_recyclerAdapter = new addTI_recyclerAdapter(modelList);
-
         addTI_recyclerAdapter.notifyDataSetChanged();
-
-
         ticreated_recyclerview.setAdapter(addTI_recyclerAdapter);
 
 
