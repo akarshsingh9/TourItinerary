@@ -14,13 +14,17 @@ import java.util.List;
 
 public class listTI_recyclerAdapter extends RecyclerView.Adapter<listTI_recyclerAdapter.ViewHolder> {
 
+    //Model Class List declared
     List<listTI_modelClass> listTI_modelClassList;
 
+//===============================================================================================================
+    //Adpater class constructor defined
     public listTI_recyclerAdapter(List<listTI_modelClass> modelClassList) {
 
         this.listTI_modelClassList = modelClassList;
     }
-
+//===============================================================================================================
+    //onCreateViewHolder - inflate list item layout
     @NonNull
     @Override
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
@@ -28,7 +32,8 @@ public class listTI_recyclerAdapter extends RecyclerView.Adapter<listTI_recycler
         ViewHolder viewHolder = new ViewHolder(v);
         return viewHolder;
     }
-
+//==================================================================================================================
+    //onBindViewHolder - defined setText() and color
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
 
@@ -45,17 +50,21 @@ public class listTI_recyclerAdapter extends RecyclerView.Adapter<listTI_recycler
         }
 
     }
-
+//===================================================================================================================
+    //list item count
     @Override
     public int getItemCount() {
         return listTI_modelClassList.size();
     }
 
+//===================================================================================================================
+    //default
     @Override
     public void onAttachedToRecyclerView(@NonNull RecyclerView recyclerView) {
         super.onAttachedToRecyclerView(recyclerView);
     }
-
+//====================================================================================================================
+    //ViewHolder Class defined to initialize all list item layout views
     public class ViewHolder extends RecyclerView.ViewHolder {
 
         TextView listTI_name;
@@ -71,5 +80,6 @@ public class listTI_recyclerAdapter extends RecyclerView.Adapter<listTI_recycler
 
         }
 
-    }
-}
+    } // end of ViewHolder class
+//======================================================================================================================
+}// end of adapter class

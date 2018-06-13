@@ -35,22 +35,23 @@ import java.util.List;
 
 public class addTI_Form extends AppCompatActivity {
 
+// Views variables declared
     Button setbtn,setbtn1;
     EditText timedept,datedept,purposeEditText;
     Spinner travelmode,fromspinner, tospinner;
     FloatingActionButton submitfab;
-    SharedPreferences preferences;
 
-    public int counterRecieved;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_ti_form);
-
+//===========================================================================================================
         //ActionBar
         ActionBar actionBar = getSupportActionBar();
         actionBar.setDisplayHomeAsUpEnabled(true);
-
+//===========================================================================================================
+        // all views initialized
         setbtn = (Button)findViewById(R.id.setbtn);
         setbtn1 = (Button)findViewById(R.id.setbtn1);
         timedept = (EditText)findViewById(R.id.timedept);
@@ -60,7 +61,7 @@ public class addTI_Form extends AppCompatActivity {
         tospinner = (Spinner)findViewById(R.id.to_spinner);
         submitfab = (FloatingActionButton)findViewById(R.id.submit_fab);
         purposeEditText = (EditText)findViewById(R.id.purpose);
-
+//======================================================================================================================
         //travel mode spinner
         List<String> travelmode_list = new ArrayList<String>();
         travelmode_list.add("Rail");
@@ -69,7 +70,7 @@ public class addTI_Form extends AppCompatActivity {
         ArrayAdapter<String> arrayAdapter = new ArrayAdapter<String>(this,android.R.layout.simple_spinner_item,travelmode_list);
         arrayAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         travelmode.setAdapter(arrayAdapter);
-
+//=======================================================================================================================
         //from spinner
         List<String> fromplaces = new ArrayList<String>();
         fromplaces.add("Delhi");
@@ -79,7 +80,7 @@ public class addTI_Form extends AppCompatActivity {
         ArrayAdapter<String> fromarrayAdapter = new ArrayAdapter<String>(this,android.R.layout.simple_spinner_item,fromplaces);
         fromarrayAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         fromspinner.setAdapter(fromarrayAdapter);
-
+//=======================================================================================================================
         //To spinner
         List<String> toplaces = new ArrayList<String>();
         toplaces.add("Delhi");
@@ -89,6 +90,8 @@ public class addTI_Form extends AppCompatActivity {
         ArrayAdapter<String> toarrayAdapter = new ArrayAdapter<String>(this,android.R.layout.simple_spinner_item,toplaces);
         toarrayAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         tospinner.setAdapter(toarrayAdapter);
+//=======================================================================================================================
+        //date btn onclick listener
 
         setbtn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -110,6 +113,8 @@ public class addTI_Form extends AppCompatActivity {
 
             }
         });
+//============================================================================================================================
+        // time btn onclick listener
 
         setbtn1.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -137,6 +142,8 @@ public class addTI_Form extends AppCompatActivity {
                             }
 
         });
+//===============================================================================================================================
+        // submit fab onclick listener
 
         submitfab.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -157,15 +164,15 @@ public class addTI_Form extends AppCompatActivity {
 
         });
 
-
-    }
-
+//=============================================================================================================================
+    } //end of onCreate()
+//==========================================================================================================================
     @Override
     public boolean onSupportNavigateUp(){
         finish();
         return true;
     }
+//========================================================================================================================
 
 
-
-}
+} //end of addTI_Form

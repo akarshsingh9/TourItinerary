@@ -12,17 +12,19 @@ import java.util.List;
 
 public class ListTI extends AppCompatActivity {
 
+    //declare RecyclerView variable
     RecyclerView listTI_recyclerView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_list_ti);
-
+//==================================================================================================================================
         //ActionBar
         ActionBar actionBar = getSupportActionBar();
         actionBar.setDisplayHomeAsUpEnabled(true);
-
+//==================================================================================================================================
+        //RecyclerView definition
         listTI_recyclerView = (RecyclerView)findViewById(R.id.recycler_view_listTI);
         listTI_recyclerView.setHasFixedSize(true);
         LinearLayoutManager layoutManager = new LinearLayoutManager(this);
@@ -40,7 +42,7 @@ public class ListTI extends AppCompatActivity {
         listTI_recyclerAdapter adapter = new listTI_recyclerAdapter(modelClassList);
 
         listTI_recyclerView.setAdapter(adapter);
-
+//=====================================================================================================================================
     }
 
     @Override

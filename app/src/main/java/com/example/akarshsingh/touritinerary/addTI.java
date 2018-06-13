@@ -26,23 +26,25 @@ import java.util.List;
 
 public class addTI extends AppCompatActivity {
 
+    //All view variables
     CardView officer_cardView;
     FloatingActionButton add_fab,submitdb;
     RecyclerView ticreated_recyclerview;
     RelativeLayout res_layout;
     TextView summaryName, summaryContacts, summaryStatus, summaryDept, summaryApproveAuth;
+
     String tino,fromplace,toplace,travelmode,dateText,timeText,purposeText;
+
     public int flag = 0;
 
     DatabaseHelper helper;
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_ti);
 
-
+//================================================================================================================================
         //get SharedPref
         final SharedPreferences preferences = getApplicationContext().getSharedPreferences("MyPref", Context.MODE_PRIVATE);
         tino = preferences.getString("tino", null);
@@ -52,11 +54,12 @@ public class addTI extends AppCompatActivity {
         String dept = preferences.getString("dept", null);
         String approvingauth = preferences.getString("approvingauth", null);
 
+//=================================================================================================================================
 
         //ActionBar
         ActionBar actionBar = getSupportActionBar();
         actionBar.setDisplayHomeAsUpEnabled(true);
-
+//=================================================================================================================================
         //view elements in the layout
         officer_cardView = (CardView) findViewById(R.id.officer_cardView);
         add_fab = (FloatingActionButton) findViewById(R.id.add_fab);
@@ -68,7 +71,7 @@ public class addTI extends AppCompatActivity {
         summaryContacts = (TextView) findViewById(R.id.summary_contact);
         summaryStatus = (TextView) findViewById(R.id.summary_status);
         summaryDept = (TextView) findViewById(R.id.summary_dept);
-
+//================================================================================================================================
 
         //cardview details changes
         summaryName.setText(officername);
@@ -76,7 +79,7 @@ public class addTI extends AppCompatActivity {
         summaryStatus.setText(status);
         summaryApproveAuth.setText(approvingauth);
         summaryContacts.setText(contactno);
-
+//================================================================================================================================
         Intent intent = getIntent();
         flag = intent.getIntExtra("flag", 0);
         if (flag != 1) {
@@ -136,10 +139,11 @@ public class addTI extends AppCompatActivity {
 
         // attaching adapter to recycler
         addTI_recyclerAdapter addTI_recyclerAdapter = new addTI_recyclerAdapter(modelList);
+
         addTI_recyclerAdapter.notifyDataSetChanged();
         ticreated_recyclerview.setAdapter(addTI_recyclerAdapter);
 
-
+//=============================================================================================================================
 
         //Floating Action Button click event
         add_fab.setOnClickListener(new View.OnClickListener() {
@@ -150,9 +154,11 @@ public class addTI extends AppCompatActivity {
                 startActivity(intent);
             }
         });
-    }
+//=============================================================================================================================
 
+    } //end of onCreate()
 
+//=============================================================================================================================
     // Up button on ActionBar
     @Override
     public boolean onSupportNavigateUp(){
@@ -160,5 +166,5 @@ public class addTI extends AppCompatActivity {
         finish();
         return true;
     }
-
+//==============================================================================================================================
 }

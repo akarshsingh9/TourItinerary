@@ -17,32 +17,35 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     // Database Name
     private static final String DATABASE_NAME = "travel_db";
 
+    //constructor
     public DatabaseHelper(Context context) {
         super(context, DATABASE_NAME, null, DATABASE_VERSION);
     }
 
-
-
+//==================================================================================================================
+    //onCreate - to create table defined as in travelInfoModelClass
     @Override
     public void onCreate(SQLiteDatabase db) {
         db.execSQL(travelInfoModelClass.CREATE_TABLE);
     }
-
+//==================================================================================================================
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
         // Drop older table if existed
         db.execSQL("DROP TABLE IF EXISTS " + travelInfoModelClass.TABLE_NAME);
-
         // Create tables again
         onCreate(db);
     }
+//===================================================================================================================
 
+    //insertTI - to insert data collected from addTI_Form to Sqlite database
     public long insertTI(String tino,String from,String to, int travelmode, String date, String time, String purpose) {
         // get writable database as we want to write data
         SQLiteDatabase db = this.getWritableDatabase();
 
+        //define ContentValues
         ContentValues values = new ContentValues();
-        // `id` and `timestamp` will be inserted automatically.
+        // `id` will be inserted automatically.
         // no need to add them
         values.put(travelInfoModelClass.COLUMN_TINUM, tino);
         values.put(travelInfoModelClass.COLUMN_FROM, from);
@@ -51,6 +54,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         values.put(travelInfoModelClass.COLUMN_DATE, date);
         values.put(travelInfoModelClass.COLUMN_TIME, time);
         values.put(travelInfoModelClass.COLUMN_PURPOSE, purpose);
+
         // insert row
         long id = db.insert(travelInfoModelClass.TABLE_NAME, null, values);
 
@@ -60,8 +64,9 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         // return newly inserted row id
         return id;
     }
+//======================================================================================================================
 
-
+    // get a single row added
     public travelInfoModelClass getTravel(long id) {
         // get readable database as we are not inserting anything
         SQLiteDatabase db = this.getReadableDatabase();
@@ -90,7 +95,8 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
         return note;
     }
-
+//=========================================================================================================================
+    //get a List of all the rows added in the database
     public List<travelInfoModelClass> getAllTravels() {
         List<travelInfoModelClass> travels = new ArrayList<>();
 
@@ -125,7 +131,9 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         // return notes list
         return travels;
     }
+//==================================================================================================================
 
+    // get count of all the rows in the database
     public int getTravelCount() {
         String countQuery = "SELECT  * FROM " + travelInfoModelClass.TABLE_NAME;
         SQLiteDatabase db = this.getReadableDatabase();
@@ -138,7 +146,8 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         // return count
         return count;
     }
-
+//===================================================================================================================
+    // delete a particular row using row id
     public boolean deletetravel(int id) {
         SQLiteDatabase db = this.getWritableDatabase();
         int result = db.delete(travelInfoModelClass.TABLE_NAME, travelInfoModelClass.COLUMN_ID + " = ?",
@@ -154,5 +163,5 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         }
 
     }
-
-}
+//=====================================================================================================================
+} // end of DatabaseHelper

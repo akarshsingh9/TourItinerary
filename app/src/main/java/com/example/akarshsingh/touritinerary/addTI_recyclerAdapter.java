@@ -26,26 +26,31 @@ import java.util.List;
 
 public class addTI_recyclerAdapter extends RecyclerView.Adapter<addTI_recyclerAdapter.ViewHolder> {
 
+    //declaring our Model class List i.e. travelInfoModelClass List
     List<travelInfoModelClass> travelInfoModelClassList;
     Context c;
-
+//===============================================================================================================
+    //contructor passing list obj in addTI
     public addTI_recyclerAdapter(List<travelInfoModelClass> travelInfoModelClassList)
     {
         this.travelInfoModelClassList = travelInfoModelClassList;
     }
-
+//===============================================================================================================
+    //default onAttached TO RecyclerView Method
     @Override
     public void onAttachedToRecyclerView(@NonNull RecyclerView recyclerView) {
         super.onAttachedToRecyclerView(recyclerView);
     }
-
+//===============================================================================================================
+    // onCreateViewHolder to inflate the recyclerview layout created i.e. each list item layout defined
     @NonNull
     @Override
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View v = LayoutInflater.from(parent.getContext()).inflate(R.layout.ticreated_recycler_layout,parent,false);
         return new ViewHolder(v);
     }
-
+//===============================================================================================================
+    //onBindViewHolder  to define action such as setText() or setOnClickListener() etc.
     @Override
     public void onBindViewHolder(@NonNull final ViewHolder holder, final int position) {
 
@@ -72,7 +77,6 @@ public class addTI_recyclerAdapter extends RecyclerView.Adapter<addTI_recyclerAd
 
             @Override
             public void onClick(View v) {
-                //boolean shouldExpand = holder.collapsable_layout.getVisibility() == View.GONE;
 
                 if(holder.collapsable_layout.getVisibility() == View.GONE)
                 {
@@ -87,12 +91,14 @@ public class addTI_recyclerAdapter extends RecyclerView.Adapter<addTI_recyclerAd
         });
 
     }
-
+//===================================================================================================================
+    // getItemCount() - returns list item count
     @Override
     public int getItemCount() {
         return travelInfoModelClassList.size();
     }
-
+//====================================================================================================================
+    // ViewHolder Class defined in extends as parameter - contains all view elements in the recyclerview layout defined
     public class ViewHolder extends RecyclerView.ViewHolder {
 
         TextView tinum;
@@ -106,6 +112,7 @@ public class addTI_recyclerAdapter extends RecyclerView.Adapter<addTI_recyclerAd
         RelativeLayout collapsable_layout;
         ImageButton delete;
 
+        // constructor with view parameter to initialize view elements
         public ViewHolder(View view)
         {
             super(view);
@@ -122,8 +129,9 @@ public class addTI_recyclerAdapter extends RecyclerView.Adapter<addTI_recyclerAd
         }
 
 
-    }
-
+    } // end of ViewHolder Class
+//===============================================================================================================
+    // delete travel method to delete list item and from database as well
     public void deleteTravel(View view,int pos)
     {
         //GET ID
@@ -147,4 +155,6 @@ public class addTI_recyclerAdapter extends RecyclerView.Adapter<addTI_recyclerAd
         this.notifyItemRemoved(pos);
 
     }
-}
+
+//==================================================================================================================
+} //end of adapter class

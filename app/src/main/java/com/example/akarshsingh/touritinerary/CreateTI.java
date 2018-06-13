@@ -38,7 +38,9 @@ public class CreateTI extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_create_ti);
         //TODO: pass fields on using SharedPreference
-    //**************************************************************************************************************
+
+//==================================================================================================================
+
         final TextView tino = (TextView)findViewById(R.id.tino);
         final TextView approvename = (TextView)findViewById(R.id.authority);
         final TextView tifor = (TextView)findViewById(R.id.TIfor);
@@ -49,14 +51,14 @@ public class CreateTI extends AppCompatActivity {
 
         //reading JSON and putting values in Views
         tino.setText(tinum());
-   //**************************************************************************************************************
+//==================================================================================================================
        //ActionBar
         ActionBar actionBar = getSupportActionBar();
         actionBar.setDisplayHomeAsUpEnabled(true);
         //hide soft keyboard
         getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_HIDDEN);
-    //*************************************************************************************************************
-        // Spinner Name
+//==================================================================================================================
+        // Spinner enterBy
         final Spinner enterby_spinner = (Spinner)findViewById(R.id.enterby_spinner);
         List<String> name_list = new ArrayList<String>();
         //JSON read names added here
@@ -90,7 +92,7 @@ public class CreateTI extends AppCompatActivity {
 
             }
         });
-    //*************************************************************************************************************
+//========================================================================================================================
         //Spinner Travel type
         Spinner travelby = (Spinner)findViewById(R.id.traveltype_spinner);
         List<String> travel_list = new ArrayList<String>();
@@ -103,7 +105,7 @@ public class CreateTI extends AppCompatActivity {
         arrayAdapter1.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         travelby.setAdapter(arrayAdapter1);
 
-    //***************************************************************************************************************
+//==========================================================================================================================
 
         //Current Date
         Date c = Calendar.getInstance().getTime();
@@ -112,7 +114,8 @@ public class CreateTI extends AppCompatActivity {
         TextView dateTextView = (TextView)findViewById(R.id.date);
         dateTextView.setText(date);
 
-    //***************************************************************************************************************
+//==========================================================================================================================
+
         //submit button
         Button submit_btn = (Button)findViewById(R.id.submit_button);
         submit_btn.setOnClickListener(new View.OnClickListener() {
@@ -138,7 +141,7 @@ public class CreateTI extends AppCompatActivity {
                 }
             }
         });
-    //***************************************************************************************************************
+//========================================================================================================================
 
 
     } //end of onCreate()
@@ -151,6 +154,8 @@ public class CreateTI extends AppCompatActivity {
     }
 
 //==================================================================================================
+
+    //TODO: remove loadJSON() therefore make changes in JSON as well
     String loadJSON()
     {
         String json = null;
@@ -184,46 +189,47 @@ public class CreateTI extends AppCompatActivity {
         return json;
     }
 //===================================================================================================
-String tinum()
-{
-    String num = "";
-    try{
-        JSONObject obj = new JSONObject(loadJSON());
-        JSONObject arr = obj.getJSONObject("array");
-        JSONArray tino = arr.getJSONArray("ti_no");
-        num = tino.getString(0);
-
-
-    }
-    catch (JSONException e)
+    // retrieve TI number from JSON
+    String tinum()
     {
-        e.printStackTrace();
-    }
+        String num = "";
+        try{
+            JSONObject obj = new JSONObject(loadJSON());
+            JSONObject arr = obj.getJSONObject("array");
+            JSONArray tino = arr.getJSONArray("ti_no");
+            num = tino.getString(0);
+            }
+        catch (JSONException e)
+        {
+            e.printStackTrace();
+        }
 
-    return num;
-}
+        return num;
+    }
 //==================================================================================================
-String enterby(int index)
-{
-    String officer_name = "";
-    String empname = "";
-    String empno = "";
-    try{
-        JSONObject object = new JSONObject(loadJSONfromAssets());
-        JSONArray arr = object.getJSONArray("array");
-        JSONObject arr_obj = arr.getJSONObject(index);
-        empname = arr_obj.getString("emp_name");
-        empno = arr_obj.getString("emp_no");
-        officer_name = empname+" ("+empno+")";
-    }
-    catch (JSONException e)
+    // retrieve enterBy name from JSON
+    String enterby(int index)
     {
-        e.printStackTrace();
-    }
+        String officer_name = "";
+        String empname = "";
+        String empno = "";
+        try{
+            JSONObject object = new JSONObject(loadJSONfromAssets());
+            JSONArray arr = object.getJSONArray("array");
+            JSONObject arr_obj = arr.getJSONObject(index);
+            empname = arr_obj.getString("emp_name");
+            empno = arr_obj.getString("emp_no");
+            officer_name = empname+" ("+empno+")";
+        }
+        catch (JSONException e)
+        {
+            e.printStackTrace();
+        }
 
-    return officer_name;
-}
+        return officer_name;
+    }
 //===================================================================================================
+    //retrieve name of the officer whose TI is created from JSON
     String tiforExtract(int index)
     {
         String grade = "";
@@ -244,25 +250,25 @@ String enterby(int index)
         return final_grade;
     }
 //==================================================================================================
-String prefname(int index)
-{
-    String prefname = "";
 
-    try{
-        JSONObject object = new JSONObject(loadJSONfromAssets());
-        JSONArray arr = object.getJSONArray("array");
-        JSONObject arr_obj = arr.getJSONObject(index);
-        prefname = arr_obj.getString("emp_name");
-
-    }
-    catch (JSONException e)
+    // retrieve preferred name of the officer from JSON
+    String prefname(int index)
     {
-        e.printStackTrace();
+        String prefname = "";
+        try{
+            JSONObject object = new JSONObject(loadJSONfromAssets());
+            JSONArray arr = object.getJSONArray("array");
+            JSONObject arr_obj = arr.getJSONObject(index);
+            prefname = arr_obj.getString("emp_name");
+        }
+        catch (JSONException e)
+        {
+            e.printStackTrace();
+        }
+        return prefname;
     }
-
-    return prefname;
-}
 //===================================================================================================
+    //retrieve name of the dept from JSON
     String deptname(int index)
     {
         String deptno = "";
@@ -287,23 +293,24 @@ String prefname(int index)
     }
 
 //===================================================================================================
-String traveltype(int index)
-{
-    String type = "";
-    JSONObject object = null;
-    try {
-        object = new JSONObject(loadJSON());
-        JSONObject arr = object.getJSONObject("array");
-        JSONArray traveltype = arr.getJSONArray("traveltype");
-        type = traveltype.getString(index);
 
-    } catch (JSONException e) {
-        e.printStackTrace();
+    // retrieve travel type from JSON
+    String traveltype(int index)
+    {
+        String type = "";
+        JSONObject object = null;
+        try {
+            object = new JSONObject(loadJSON());
+            JSONObject arr = object.getJSONObject("array");
+            JSONArray traveltype = arr.getJSONArray("traveltype");
+            type = traveltype.getString(index);
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+        return type;
     }
-
-return type;
-}
 //==================================================================================================
+    // retrieve RO name from JSON as approving authority
     String approveAuth(int index)
     {
         String approvename = "";
@@ -323,5 +330,5 @@ return type;
         }
         return approvename;
     }
-
+//==================================================================================================
 } //end of CreateTI Activity
