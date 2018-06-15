@@ -108,7 +108,7 @@
                 android:layout_height="wrap_content"
                 android:id="@+id/fromSpinner"
                 android:layout_marginStart="8dp"
-                android:layout_marginTop="8dp"
+
                 />
 
             <TextView
@@ -123,7 +123,7 @@
                 android:layout_height="wrap_content"
                 android:id="@+id/toSpinner"
                 android:layout_marginStart="8dp"
-                android:layout_marginTop="8dp"
+
                 />
         </LinearLayout>
     </android.support.v7.widget.CardView>
@@ -152,60 +152,59 @@
             >
 
             <LinearLayout
+                android:id="@+id/textViewLayout"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:orientation="vertical"
-                android:id="@+id/textViewLayout">
+                android:orientation="vertical">
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Departure Date*"
-                android:layout_marginTop="12dp"
-                android:layout_marginStart="8dp"
-                android:id="@+id/deptText"/>
+                <TextView
+                    android:id="@+id/deptText"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="8dp"
+                    android:layout_marginTop="22dp"
+                    android:text="Departure Date*" />
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Date of Reaching*"
-                android:layout_marginTop="18dp"
-                android:layout_marginStart="8dp"
-                android:id="@+id/reachingText"/>
+                <TextView
+                    android:id="@+id/reachingText"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="8dp"
+                    android:layout_marginTop="24dp"
+                    android:text="Date of Reaching*" />
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Departure Date \n(From Destination*)"
-                android:layout_marginTop="18dp"
-                android:layout_marginStart="8dp"
-                android:id="@+id/deptText2"/>
+                <TextView
+                    android:id="@+id/deptText2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="8dp"
+                    android:layout_marginTop="24dp"
+                    android:text="Departure Date \n(From Destination*)" />
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Date of Reaching\n(From Destination*)"
-                android:layout_marginTop="18dp"
-                android:layout_marginStart="8dp"
-                android:id="@+id/reachingText2"/>
+                <TextView
+                    android:id="@+id/reachingText2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="8dp"
+                    android:layout_marginTop="24dp"
+                    android:text="Date of Reaching\n(From Destination*)" />
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Preferred Time*"
-                android:visibility="gone"
-                android:layout_marginTop="12dp"
-                android:layout_marginStart="8dp"
-                android:id="@+id/prefText"/>
+                <TextView
+                    android:id="@+id/prefText"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Preferred Time\n(Destination*)"
-                android:layout_marginTop="12dp"
-                android:layout_marginStart="8dp"
-                android:visibility="gone"
-                android:id="@+id/prefText2"/>
+                    android:layout_marginStart="8dp"
+                    android:layout_marginTop="20dp"
+                    android:text="Preferred Time*" />
+
+                <TextView
+                    android:id="@+id/prefText2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="8dp"
+                    android:layout_marginTop="12dp"
+                    android:text="Preferred Time\n(Destination*)" />
             </LinearLayout>
 
             <LinearLayout
@@ -220,38 +219,38 @@
                 <EditText
                     android:id="@+id/deptEditText"
                     android:layout_width="150dp"
-                    android:layout_height="36dp" />
+                    android:layout_height="wrap_content" />
 
                 <EditText
                     android:id="@+id/reachEditText"
                     android:layout_width="150dp"
-                    android:layout_height="36dp" />
+                    android:layout_height="wrap_content" />
 
                 <EditText
                     android:id="@+id/deptEditText2"
                     android:layout_width="150dp"
-                    android:layout_height="36dp" />
+                    android:layout_height="wrap_content" />
 
                 <EditText
                     android:id="@+id/reachEditText2"
                     android:layout_width="150dp"
-                    android:layout_height="35dp"
+                    android:layout_height="wrap_content"
                     android:layout_marginTop="15dp"/>
 
                 <Spinner
-                    android:layout_width="150dp"
+                    android:layout_width="160dp"
                     android:layout_height="wrap_content"
                     android:id="@+id/prefTime"
-                    android:layout_marginTop="24dp"
-                    android:visibility="gone"
+                    android:layout_marginTop="16dp"
+
                     />
 
                 <Spinner
-                    android:layout_width="150dp"
+                    android:layout_width="160dp"
                     android:layout_height="wrap_content"
                     android:id="@+id/prefTime2"
-                    android:layout_marginTop="12dp"
-                    android:visibility="gone"
+
+
                     />
 
             </LinearLayout>
@@ -269,7 +268,7 @@
                     android:src="@drawable/ic_event_black_24dp"
                     android:background="@null"
                     android:id="@+id/deptDateImageButton"
-                    android:layout_marginTop="8dp"
+                    android:layout_marginTop="20dp"
                     android:layout_marginStart="8dp"
                     />
 
@@ -279,7 +278,7 @@
                     android:src="@drawable/ic_event_black_24dp"
                     android:background="@null"
                     android:id="@+id/reachImageButton"
-                    android:layout_marginTop="14dp"
+                    android:layout_marginTop="20dp"
                     android:layout_marginStart="8dp"
                     />
 
@@ -290,7 +289,7 @@
                     android:src="@drawable/ic_event_black_24dp"
                     android:background="@null"
                     android:id="@+id/deptDateImageButton2"
-                    android:layout_marginTop="14dp"
+                    android:layout_marginTop="20dp"
                     android:layout_marginStart="8dp"
                     />
 
@@ -300,7 +299,7 @@
                     android:src="@drawable/ic_event_black_24dp"
                     android:background="@null"
                     android:id="@+id/reachImageButton2"
-                    android:layout_marginTop="22dp"
+                    android:layout_marginTop="36dp"
                     android:layout_marginStart="8dp"
                     />
 
@@ -355,18 +354,19 @@
             android:layout_height="wrap_content"
             android:orientation="horizontal">
 
-        <TextView
+            <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Purpose of Visit"
                 android:layout_marginTop="8dp"
                 android:layout_marginStart="8dp"
-                android:id="@+id/purposeText"/>
+                android:id="@+id/purposeText" />
 
             <EditText
                 android:id="@+id/purposeEditText"
                 android:layout_width="200dp"
                 android:layout_height="wrap_content"
+                android:maxLength="30"
                 android:layout_marginStart="15dp"
                 android:layout_marginTop="5dp" />
         </LinearLayout>
