@@ -480,37 +480,92 @@ public class addTI_Form extends AppCompatActivity {
             }
         });
 //=============================================================================================================================
-        //RadioButton Logic
-        radioGroup.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
+        //travelmode logic on air and other modes in one way and round trip
+        travelModeSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
-            public void onCheckedChanged(RadioGroup group, int checkedId) {
-                switch (checkedId)
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                String air = parent.getSelectedItem().toString();
+                if (air == "Air")
                 {
-                    case R.id.oneway:
+                    if (oneWay.isChecked())
+                    {
                         deptTV2.setVisibility(View.GONE);
                         deptDestinationDate.setVisibility(View.GONE);
                         deptDestinationCal.setVisibility(View.GONE);
                         reachTV2.setVisibility(View.GONE);
                         reachDestinationCal.setVisibility(View.GONE);
                         reachDestinationDate.setVisibility(View.GONE);
-                        /*
-                        if (travelModeSpinner.getSelectedItem().toString() == "Air")
-                        {
-                            prefTV2.setVisibility(View.GONE);
-                            prefDestinationSpinner.setVisibility(View.GONE);
-                        }
-                        else
-                        {
-                            prefTV.setVisibility(View.GONE);
-                            prefTimeSpinner.setVisibility(View.GONE);
-                            prefTV2.setVisibility(View.GONE);
-                            prefDestinationSpinner.setVisibility(View.GONE);
-                        }*/
-                        break;
-                    case R.id.roundtrip:
-                        break;
-
+                        prefTV.setVisibility(View.VISIBLE);
+                        prefTimeSpinner.setVisibility(View.VISIBLE);
+                        prefTV2.setVisibility(View.GONE);
+                        prefDestinationSpinner.setVisibility(View.GONE);
+                    }
+                    else if (roundTrip.isChecked())
+                    {
+                        deptTV2.setVisibility(View.VISIBLE);
+                        deptDestinationDate.setVisibility(View.VISIBLE);
+                        deptDestinationCal.setVisibility(View.VISIBLE);
+                        reachTV2.setVisibility(View.VISIBLE);
+                        reachDestinationCal.setVisibility(View.VISIBLE);
+                        reachDestinationDate.setVisibility(View.VISIBLE);
+                        prefTV.setVisibility(View.VISIBLE);
+                        prefTimeSpinner.setVisibility(View.VISIBLE);
+                        prefTV2.setVisibility(View.VISIBLE);
+                        prefDestinationSpinner.setVisibility(View.VISIBLE);
+                    }
                 }
+                else
+                {
+                    if (oneWay.isChecked())
+                    {
+                        prefTV.setVisibility(View.GONE);
+                        prefTimeSpinner.setVisibility(View.GONE);
+                        prefTV2.setVisibility(View.GONE);
+                        prefDestinationSpinner.setVisibility(View.GONE);
+                        deptTV2.setVisibility(View.GONE);
+                        deptDestinationDate.setVisibility(View.GONE);
+                        deptDestinationCal.setVisibility(View.GONE);
+                        reachTV2.setVisibility(View.GONE);
+                        reachDestinationCal.setVisibility(View.GONE);
+                        reachDestinationDate.setVisibility(View.GONE);
+
+                    }
+                    else if (roundTrip.isChecked())
+                    {
+                        deptTV2.setVisibility(View.VISIBLE);
+                        deptDestinationDate.setVisibility(View.VISIBLE);
+                        deptDestinationCal.setVisibility(View.VISIBLE);
+                        reachTV2.setVisibility(View.VISIBLE);
+                        reachDestinationCal.setVisibility(View.VISIBLE);
+                        reachDestinationDate.setVisibility(View.VISIBLE);
+                        prefTV.setVisibility(View.GONE);
+                        prefTimeSpinner.setVisibility(View.GONE);
+                        prefTV2.setVisibility(View.GONE);
+                        prefDestinationSpinner.setVisibility(View.GONE);
+                    }
+                }
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+
+            }
+        });
+//==========================================================================================================================
+        //submit btn onClick
+        submit.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(addTI_Form.this,addTI.class);
+                intent.putExtra("flag",1);
+                intent.putExtra("from",fromplaceSpinner.getSelectedItem().toString());
+                intent.putExtra("to",toplaceSpinner.getSelectedItem().toString());
+                intent.putExtra("travelmode",travelModeSpinner.getSelectedItem().toString());
+                intent.putExtra("date",deptDate.getText().toString());
+                intent.putExtra("time",prefTimeSpinner.getSelectedItem().toString());
+                intent.putExtra("purpose",purpose.getText().toString());
+                startActivity(intent);
+
             }
         });
     } //end of onCreate()

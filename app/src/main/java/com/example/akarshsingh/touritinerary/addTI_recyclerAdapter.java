@@ -58,6 +58,18 @@ public class addTI_recyclerAdapter extends RecyclerView.Adapter<addTI_recyclerAd
         holder.fromplace.setText(travelInfoModelClassList.get(position).getFrom());
         holder.toplace.setText(travelInfoModelClassList.get(position).getTo());
         holder.travelmode.setImageResource(travelInfoModelClassList.get(position).getTravelmode());
+        if (travelInfoModelClassList.get(position).getTravelmode() == R.drawable.ic_flight_round)
+        {
+            holder.timeTV.setVisibility(View.VISIBLE);
+            holder.timeSelected.setVisibility(View.VISIBLE);
+            holder.timehrs.setVisibility(View.VISIBLE);
+        }
+        else
+        {
+            holder.timeTV.setVisibility(View.GONE);
+            holder.timeSelected.setVisibility(View.GONE);
+            holder.timehrs.setVisibility(View.GONE);
+        }
 
         holder.date_dept.setText(travelInfoModelClassList.get(position).getDate());
         holder.time_dept.setText(travelInfoModelClassList.get(position).getTime());
@@ -106,7 +118,7 @@ public class addTI_recyclerAdapter extends RecyclerView.Adapter<addTI_recyclerAd
         TextView toplace;
         TextView date_dept;
         TextView time_dept;
-        TextView purposeTV;
+        TextView purposeTV,timeTV,timeSelected,timehrs;
         ImageView travelmode;
         RelativeLayout header_infolayout;
         RelativeLayout collapsable_layout;
@@ -125,6 +137,9 @@ public class addTI_recyclerAdapter extends RecyclerView.Adapter<addTI_recyclerAd
             purposeTV = (TextView)view.findViewById(R.id.purpose_text);
             header_infolayout = (RelativeLayout)view.findViewById(R.id.header_info);
             collapsable_layout =(RelativeLayout)view.findViewById(R.id.collapsable_info);
+            timeTV = (TextView)view.findViewById(R.id.TimeTV);
+            timeSelected = (TextView)view.findViewById(R.id.TimeSelected);
+            timehrs = (TextView)view.findViewById(R.id.hrs);
             delete = (ImageButton)view.findViewById(R.id.delete);
         }
 

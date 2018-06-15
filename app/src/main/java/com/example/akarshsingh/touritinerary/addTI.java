@@ -71,6 +71,8 @@ public class addTI extends AppCompatActivity {
         summaryContacts = (TextView) findViewById(R.id.summary_contact);
         summaryStatus = (TextView) findViewById(R.id.summary_status);
         summaryDept = (TextView) findViewById(R.id.summary_dept);
+
+
 //================================================================================================================================
 
         //cardview details changes
@@ -111,14 +113,24 @@ public class addTI extends AppCompatActivity {
         timeText = intent.getStringExtra("time");
         purposeText = intent.getStringExtra("purpose");
 
+
         int imageres;
-        if (TextUtils.equals(travelmode,"Flight"))
+        if (TextUtils.equals(travelmode,"Air"))
         {
             imageres = R.drawable.ic_flight_round;
+
+        }
+        else if (TextUtils.equals(travelmode,"Rail"))
+        {
+            imageres = R.drawable.ic_train_round;
+        }
+        else if (TextUtils.equals(travelmode,"Own Car"))
+        {
+            imageres = R.drawable.ic_car_round;
         }
         else
         {
-            imageres = R.drawable.ic_train_round;
+            imageres = R.drawable.ic_taxi_round;
         }
 
         helper = new DatabaseHelper(this);
@@ -136,6 +148,7 @@ public class addTI extends AppCompatActivity {
         // recyclermodelList.add(travel);
         modelList.addAll(helper.getAllTravels());
         modelList.remove(0);
+
 
         // attaching adapter to recycler
         addTI_recyclerAdapter addTI_recyclerAdapter = new addTI_recyclerAdapter(modelList);
