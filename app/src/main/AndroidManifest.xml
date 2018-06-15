@@ -17,12 +17,16 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".MainActivity">
+        <activity android:name=".MainActivity"
+            >
 
         </activity>
-        <activity android:name=".CreateTI" />
-        <activity android:name=".ListTI" />
-        <activity android:name=".addTI" />
+        <activity android:name=".CreateTI"
+           />
+        <activity android:name=".ListTI"
+            />
+        <activity android:name=".addTI"
+        />
         <activity android:name=".addTI_Form" />
         <activity
             android:name=".LoginActivity"

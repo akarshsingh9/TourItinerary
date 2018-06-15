@@ -1,177 +1,406 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".addTI_Form"
-    android:id="@+id/reslayout3">
+    tools:context=".addTI_Form">
+<LinearLayout
+    android:orientation="vertical"
+    android:id="@+id/llayout3"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginStart="10dp"
+    android:layout_marginEnd="10dp"
+    >
 
+<TextView
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:text="Trip Details"
+    android:id="@+id/tripText"
+    android:textAppearance="@style/Base.TextAppearance.AppCompat.Medium"
+    android:layout_marginTop="12dp"/>
+
+   <android.support.v7.widget.CardView
+       android:layout_width="match_parent"
+       android:layout_height="wrap_content"
+       android:id="@+id/tripcard"
+       android:layout_marginTop="8dp"
+       android:layout_below="@id/tripText">
+       <LinearLayout
+           android:layout_width="match_parent"
+           android:layout_height="wrap_content"
+           android:layout_marginStart="8dp"
+           android:layout_marginBottom="8dp"
+           android:orientation="vertical">
+       <RadioGroup
+           android:layout_width="match_parent"
+           android:layout_height="wrap_content"
+           android:orientation="horizontal"
+           android:layout_marginTop="12dp"
+           android:id="@+id/tripRadioGroup">
+
+           <RadioButton
+               android:layout_width="wrap_content"
+               android:layout_height="wrap_content"
+               android:text="One Way"
+               android:id="@+id/oneway"/>
+
+           <RadioButton
+               android:layout_width="wrap_content"
+               android:layout_height="wrap_content"
+               android:text="Round Trip"
+               android:id="@+id/roundtrip"
+               android:layout_marginStart="12dp"/>
+
+
+       </RadioGroup>
+
+           <TextView
+               android:layout_width="wrap_content"
+               android:layout_height="wrap_content"
+               android:id="@+id/travelmodeText"
+               android:text="Mode of Travel"
+               android:layout_marginStart="8dp"
+               android:layout_marginTop="8dp"/>
+       <Spinner
+           android:layout_width="200dp"
+           android:layout_height="wrap_content"
+           android:id="@+id/travelmodeSpinner"
+           android:layout_marginTop="8dp"
+           />
+       </LinearLayout>
+   </android.support.v7.widget.CardView>
+
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Place"
+        android:layout_below="@id/tripcard"
+        android:textAppearance="@style/Base.TextAppearance.AppCompat.Medium"
+        android:id="@+id/placeText"
+        android:layout_marginTop="12dp"/>
 
     <android.support.v7.widget.CardView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/form_header_cardView"
-        >
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Arun Kumar Panda (31919150)"
-            android:textAllCaps="true"
-            android:textColor="#000000"
-            android:textSize="18sp"
-            android:layout_marginTop="12dp"
-            android:layout_marginStart="12dp"
-            android:layout_marginBottom="8dp"
-            android:id="@+id/form_header_name"
-            />
-    </android.support.v7.widget.CardView>
-<LinearLayout
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:layout_below="@id/form_header_cardView"
-    android:orientation="vertical">
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/head_from"
-        android:layout_marginTop="10dp"
-        android:layout_marginStart="12dp"
-        android:textSize="20sp"
-        android:textColor="#000000"
-        android:text="From"/>
-
-    <Spinner
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="5dp"
-        android:layout_marginStart="16dp"
-        android:layout_marginEnd="60dp"
-        android:id="@+id/from_spinner"
-        android:popupElevation="3dp"
-        android:elevation="3dp"
-        />
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/head_to"
-        android:layout_marginTop="10dp"
-        android:layout_marginStart="12dp"
-        android:textSize="20sp"
-        android:textColor="#000000"
-        android:text="To"/>
-
-    <Spinner
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="5dp"
-        android:layout_marginStart="16dp"
-        android:layout_marginEnd="60dp"
-        android:id="@+id/to_spinner"
-        android:popupElevation="3dp"
-        android:elevation="3dp"
-        />
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/head_travelmode"
-        android:layout_marginTop="10dp"
-        android:layout_marginStart="12dp"
-        android:textSize="20sp"
-        android:textColor="#000000"
-        android:text="Travel Mode"/>
-
-    <Spinner
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="5dp"
-        android:layout_marginStart="16dp"
-        android:layout_marginEnd="60dp"
-        android:id="@+id/travelmode_spinner"
-        android:popupElevation="3dp"
-        android:elevation="3dp"
-        />
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/head_deptdate"
-        android:layout_marginTop="10dp"
-        android:layout_marginStart="12dp"
-        android:textSize="20sp"
-        android:textColor="#000000"
-        android:text="Departure Date"/>
-<LinearLayout
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
-    android:orientation="horizontal">
-    <EditText
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="12dp"
-        android:id="@+id/datedept"
-        />
-    <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="22dp"
-        android:text="set"
-        android:id="@+id/setbtn"/>
-</LinearLayout>
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/head_preftime"
-        android:layout_marginTop="10dp"
-        android:layout_marginStart="12dp"
-        android:textSize="20sp"
-        android:textColor="#000000"
-        android:text="Pref. Time"/>
-
-    <LinearLayout
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:layout_marginTop="10dp">
-
-        <EditText
+        android:id="@+id/placecard"
+        android:layout_marginTop="8dp"
+        android:layout_below="@id/placeText">
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginStart="12dp"
-            android:id="@+id/timedept"
-            />
-        <Button
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="22dp"
-            android:text="set"
-            android:id="@+id/setbtn1"/>
-    </LinearLayout>
+            android:layout_marginStart="8dp"
+            android:layout_marginBottom="8dp"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="From"
+                android:layout_marginTop="8dp"
+                android:layout_marginStart="8dp"
+                android:id="@+id/fromText"/>
+            <Spinner
+                android:layout_width="200dp"
+                android:layout_height="wrap_content"
+                android:id="@+id/fromSpinner"
+                android:layout_marginStart="8dp"
+
+                />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="To"
+                android:layout_marginTop="8dp"
+                android:layout_marginStart="8dp"
+                android:id="@+id/toText"/>
+            <Spinner
+                android:layout_width="200dp"
+                android:layout_height="wrap_content"
+                android:id="@+id/toSpinner"
+                android:layout_marginStart="8dp"
+
+                />
+        </LinearLayout>
+    </android.support.v7.widget.CardView>
+
+
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/head_purpose"
-        android:layout_marginTop="10dp"
-        android:layout_marginStart="12dp"
-        android:textSize="20sp"
-        android:textColor="#000000"
-        android:text="Purpose"/>
+        android:text="Date and Time"
+        android:layout_below="@id/placecard"
+        android:textAppearance="@style/Base.TextAppearance.AppCompat.Medium"
+        android:id="@+id/dateText"
+        android:layout_marginTop="12dp"/>
 
-    <EditText
+    <android.support.v7.widget.CardView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginStart="12dp"
-        android:layout_marginEnd="60dp"
-        android:id="@+id/purpose"/>
+        android:id="@+id/datecard"
+        android:layout_marginTop="8dp"
+        android:layout_below="@id/dateText">
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginBottom="8dp"
+            >
 
-</LinearLayout>
-    <android.support.design.widget.FloatingActionButton
+            <LinearLayout
+                android:id="@+id/textViewLayout"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/deptText"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="8dp"
+                    android:layout_marginTop="22dp"
+                    android:text="Departure Date*" />
+
+                <TextView
+                    android:id="@+id/reachingText"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="8dp"
+                    android:layout_marginTop="24dp"
+                    android:text="Date of Reaching*" />
+
+                <TextView
+                    android:id="@+id/deptText2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="8dp"
+                    android:layout_marginTop="24dp"
+                    android:text="Departure Date \n(From Destination*)" />
+
+                <TextView
+                    android:id="@+id/reachingText2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="8dp"
+                    android:layout_marginTop="24dp"
+                    android:text="Date of Reaching\n(From Destination*)" />
+
+                <TextView
+                    android:id="@+id/prefText"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+
+                    android:layout_marginStart="8dp"
+                    android:layout_marginTop="20dp"
+                    android:text="Preferred Time*" />
+
+                <TextView
+                    android:id="@+id/prefText2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="8dp"
+                    android:layout_marginTop="12dp"
+                    android:text="Preferred Time\n(Destination*)" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:baselineAligned="true"
+                android:gravity="center"
+                android:id="@+id/editTextLayout"
+                android:layout_toEndOf="@id/textViewLayout">
+
+                <EditText
+                    android:id="@+id/deptEditText"
+                    android:layout_width="150dp"
+                    android:layout_height="wrap_content" />
+
+                <EditText
+                    android:id="@+id/reachEditText"
+                    android:layout_width="150dp"
+                    android:layout_height="wrap_content" />
+
+                <EditText
+                    android:id="@+id/deptEditText2"
+                    android:layout_width="150dp"
+                    android:layout_height="wrap_content" />
+
+                <EditText
+                    android:id="@+id/reachEditText2"
+                    android:layout_width="150dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="15dp"/>
+
+                <Spinner
+                    android:layout_width="160dp"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/prefTime"
+                    android:layout_marginTop="16dp"
+
+                    />
+
+                <Spinner
+                    android:layout_width="160dp"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/prefTime2"
+
+
+                    />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:orientation="vertical"
+                android:baselineAligned="true"
+                android:layout_toEndOf="@id/editTextLayout">
+
+                <ImageButton
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/ic_event_black_24dp"
+                    android:background="@null"
+                    android:id="@+id/deptDateImageButton"
+                    android:layout_marginTop="20dp"
+                    android:layout_marginStart="8dp"
+                    />
+
+                <ImageButton
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/ic_event_black_24dp"
+                    android:background="@null"
+                    android:id="@+id/reachImageButton"
+                    android:layout_marginTop="20dp"
+                    android:layout_marginStart="8dp"
+                    />
+
+
+                <ImageButton
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/ic_event_black_24dp"
+                    android:background="@null"
+                    android:id="@+id/deptDateImageButton2"
+                    android:layout_marginTop="20dp"
+                    android:layout_marginStart="8dp"
+                    />
+
+                <ImageButton
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/ic_event_black_24dp"
+                    android:background="@null"
+                    android:id="@+id/reachImageButton2"
+                    android:layout_marginTop="36dp"
+                    android:layout_marginStart="8dp"
+                    />
+
+            </LinearLayout>
+        </RelativeLayout>
+    </android.support.v7.widget.CardView>
+
+
+    <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:layout_alignParentEnd="true"
-        android:layout_marginEnd="20dp"
-        android:layout_marginBottom="20dp"
-        android:src="@drawable/ic_baseline_done_24px"
-        android:id="@+id/submit_fab"
-        />
-</RelativeLayout>
+        android:text="Visit Details"
+        android:textAppearance="@style/Base.TextAppearance.AppCompat.Medium"
+        android:id="@+id/visitText"
+        android:layout_marginTop="10dp"/>
+
+    <android.support.v7.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/visitcard"
+        android:layout_marginTop="5dp">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginBottom="8dp"
+            android:orientation="vertical">
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="No. of Days Stay"
+                android:layout_marginTop="8dp"
+                android:layout_marginStart="8dp"
+                android:id="@+id/stayText"/>
+            <EditText
+                android:layout_width="50dp"
+                android:layout_height="wrap_content"
+                android:id="@+id/stayEditText"
+                android:inputType="number"
+                android:layout_marginStart="12dp"
+                android:layout_marginTop="5dp"
+                />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Purpose of Visit"
+                android:layout_marginTop="8dp"
+                android:layout_marginStart="8dp"
+                android:id="@+id/purposeText" />
+
+            <EditText
+                android:id="@+id/purposeEditText"
+                android:layout_width="200dp"
+                android:layout_height="wrap_content"
+                android:maxLength="30"
+                android:layout_marginStart="15dp"
+                android:layout_marginTop="5dp" />
+        </LinearLayout>
+
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Remarks"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginStart="8dp"
+                    android:id="@+id/remarksText"/>
+
+                <EditText
+                    android:id="@+id/remarksEditText"
+                    android:layout_width="200dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="58dp"
+                    android:layout_marginTop="5dp" />
+            </LinearLayout>
+        </LinearLayout>
+    </android.support.v7.widget.CardView>
+
+<Button
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:id="@+id/submitFormBtn"
+    android:text="submit"
+    android:layout_marginTop="20dp"
+    android:layout_gravity="center"/>
+</LinearLayout>
+</ScrollView>

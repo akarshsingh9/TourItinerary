@@ -42,7 +42,7 @@
             android:layout_height="wrap_content"
             android:text=", Time: "
             android:textAppearance="@style/Base.TextAppearance.AppCompat.Small"
-            android:id="@+id/Time"
+            android:id="@+id/TimeTV"
             />
 
         <TextView
