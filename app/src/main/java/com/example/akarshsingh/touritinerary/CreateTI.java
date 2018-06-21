@@ -1,15 +1,21 @@
 package com.example.akarshsingh.touritinerary;
 
+import android.app.SearchManager;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v7.app.ActionBar;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.text.TextUtils;
+import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.WindowManager;
@@ -17,6 +23,8 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageButton;
+import android.support.v7.widget.SearchView;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -60,6 +68,9 @@ public class CreateTI extends AppCompatActivity {
         final TextView dept = (TextView)findViewById(R.id.dept);
         final EditText contacts = (EditText)findViewById(R.id.contacts);
         final TextView status = (TextView)findViewById(R.id.status);
+
+        final ImageButton edit = (ImageButton)findViewById(R.id.searchRO);
+
 
         //reading JSON and putting values in Views
         tino.setText("2016_123123");
@@ -184,6 +195,120 @@ public class CreateTI extends AppCompatActivity {
             @Override
             public void onNothingSelected(AdapterView<?> parent) {
 
+            }
+        });
+//========================================================================================================================
+        //search RO using edit ImageButton
+
+        edit.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                LayoutInflater inflater = getLayoutInflater();
+                View alertLayout = inflater.inflate(R.layout.searchdialog, null);
+
+                final ImageButton searchSubmit = alertLayout.findViewById(R.id.searchsubmit);
+                final EditText searchText = alertLayout.findViewById(R.id.searchText);
+                final String url ="http://10.0.2.2:8080/roemp.jsp";
+
+
+                final RecyclerView recyclerView = alertLayout.findViewById(R.id.searchList);
+                final List<Search> searches = new ArrayList<>();
+                final String[] edittext = new String[1];
+
+                LinearLayoutManager layoutManager = new LinearLayoutManager(CreateTI.this);
+                recyclerView.setLayoutManager(layoutManager);
+                searchSubmit.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        searches.clear();
+                        edittext[0] = searchText.getText().toString().toLowerCase();
+                        // volley request to api
+                        RequestQueue queue = Volley.newRequestQueue(getApplicationContext());
+                        JsonArrayRequest jsonArrayRequest = new JsonArrayRequest(Request.Method.GET, url, null, new Response.Listener<JSONArray>() {
+                            @Override
+                            public void onResponse(JSONArray response) {
+                                // iterate through length of the array
+                                for (int i =0;i<response.length();i++)
+                                {
+                                    try {
+
+                                        JSONObject roObject = response.getJSONObject(i);
+                                        String roname = roObject.getString("ro_name");
+                                        if (roname.toLowerCase().contains(edittext[0]))
+                                        {
+                                            String roid = roObject.getString("ro_emp_no");
+                                            String rograde = roObject.getString("ro_grade");
+                                            searches.add(new Search(roid,roname,rograde));
+                                            final SearchAdapter searchAdapter = new SearchAdapter(searches);
+                                            recyclerView.setAdapter(searchAdapter);
+                                        }
+
+
+                                    } catch (JSONException e) {
+                                        e.printStackTrace();
+                                    }
+                                }
+
+                            }
+                        }, new Response.ErrorListener() {
+                            @Override
+                            public void onErrorResponse(VolleyError error) {
+
+                            }
+                        });
+
+                        queue.add(jsonArrayRequest);
+                    }
+                });
+                //searches.add(new Search("123435","Arun kumar Panda","10E"));
+
+
+
+
+
+                /*final EditText etUsername = alertLayout.findViewById(R.id.et_username);
+                final EditText etEmail = alertLayout.findViewById(R.id.et_email);
+                final CheckBox cbToggle = alertLayout.findViewById(R.id.cb_show_pass);
+
+                cbToggle.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+
+                    @Override
+                    public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                        if (isChecked) {
+                            // to encode password in dots
+                            etEmail.setTransformationMethod(PasswordTransformationMethod.getInstance());
+                        } else {
+                            // to display the password in normal text
+                            etEmail.setTransformationMethod(null);
+                        }
+                    }
+                });
+*/
+                AlertDialog.Builder alert = new AlertDialog.Builder(CreateTI.this);
+                alert.setTitle("Search RO");
+                // this is set the view from XML inside AlertDialog
+                alert.setView(alertLayout);
+                // disallow cancel of AlertDialog on click of back button and outside touch
+                alert.setCancelable(false);
+                alert.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        Toast.makeText(getBaseContext(), "Cancel clicked", Toast.LENGTH_SHORT).show();
+                    }
+                });
+
+                alert.setPositiveButton("Done", new DialogInterface.OnClickListener() {
+
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        //String user = etUsername.getText().toString();
+                        //String pass = etEmail.getText().toString();
+                        //Toast.makeText(getBaseContext(), "Username: " + user + " Email: " + pass, Toast.LENGTH_SHORT).show();
+                    }
+                });
+                AlertDialog dialog = alert.create();
+                dialog.show();
             }
         });
 
