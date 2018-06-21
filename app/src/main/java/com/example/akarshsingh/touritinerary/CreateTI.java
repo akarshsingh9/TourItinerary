@@ -266,6 +266,7 @@ public class CreateTI extends AppCompatActivity {
 
 
 
+
                 /*final EditText etUsername = alertLayout.findViewById(R.id.et_username);
                 final EditText etEmail = alertLayout.findViewById(R.id.et_email);
                 final CheckBox cbToggle = alertLayout.findViewById(R.id.cb_show_pass);
@@ -302,9 +303,7 @@ public class CreateTI extends AppCompatActivity {
 
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
-                        //String user = etUsername.getText().toString();
-                        //String pass = etEmail.getText().toString();
-                        //Toast.makeText(getBaseContext(), "Username: " + user + " Email: " + pass, Toast.LENGTH_SHORT).show();
+                        //approvename.setText(searchText.getText());
                     }
                 });
                 AlertDialog dialog = alert.create();

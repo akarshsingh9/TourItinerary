@@ -87,11 +87,14 @@ public class addTI extends AppCompatActivity {
         if (flag != 1) {
             ticreated_recyclerview.setVisibility(View.GONE);
         } else {
+
             ticreated_recyclerview.setVisibility(View.VISIBLE);
+
             submitdb.setVisibility(View.VISIBLE);
             submitdb.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
+
                     helper.close();
                     v.getContext().deleteDatabase("travel_db");
                     Toast.makeText(v.getContext(),"YOUR TI SUCCESSFULLY SUBMITTED",Toast.LENGTH_SHORT).show();
