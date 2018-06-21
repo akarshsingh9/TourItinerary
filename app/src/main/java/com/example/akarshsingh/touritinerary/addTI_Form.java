@@ -3,6 +3,7 @@ package com.example.akarshsingh.touritinerary;
 import android.app.DatePickerDialog;
 import android.app.Dialog;
 import android.app.TimePickerDialog;
+import android.app.VoiceInteractor;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -34,9 +35,18 @@ import android.widget.TextView;
 import android.widget.TimePicker;
 import android.widget.Toast;
 
+import com.android.volley.Request;
+import com.android.volley.RequestQueue;
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.JsonArrayRequest;
+import com.android.volley.toolbox.Volley;
+
 import org.json.JSONArray;
+import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.lang.reflect.Method;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.List;
@@ -150,20 +160,51 @@ public class addTI_Form extends AppCompatActivity {
             }
         });
 //=========================================================================================================================
-        //from spinner
-        List<String> fromlist = new ArrayList<String>();
+       // from and to spinner - read from api city list
+        final List<String> fromlist = new ArrayList<String>();
+        final List<String> tolist = new ArrayList<String>();
+
+
         fromlist.add("Select a City");
-        fromlist.add("Ahmedabad");
-        fromlist.add("Bangalore");
-        fromlist.add("Chennai");
-        fromlist.add("Delhi");
-        fromlist.add("Kolkata");
-        fromlist.add("Mumbai");
-        fromlist.add("Patna");
-        fromlist.add("Ranchi");
+        tolist.add("Select a City");
 
+        String url ="http://10.0.2.2:8080/city.jsp";
 
-        ArrayAdapter<String> fromAdapter = new ArrayAdapter<String>(this,R.layout.spinner_item,fromlist)
+        // volley request to api
+        RequestQueue queue = Volley.newRequestQueue(getApplicationContext());
+        JsonArrayRequest jsonArrayRequest = new JsonArrayRequest(Request.Method.GET, url, null, new Response.Listener<JSONArray>() {
+            @Override
+            public void onResponse(JSONArray response) {
+                // iterate through length of the array
+                for (int i =0;i<response.length();i++)
+                {
+                    try {
+
+                        //get each city object
+                        JSONObject cityObject = response.getJSONObject(i);
+                        //get city name from json object within json array
+                        String city = cityObject.getString("name");
+                        //add city names to the list
+                        fromlist.add(city);
+                        tolist.add(city);
+
+                    } catch (JSONException e) {
+                        e.printStackTrace();
+                    }
+                }
+
+            }
+        }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+
+            }
+        });
+
+        queue.add(jsonArrayRequest);
+
+        // from array adapter
+        final ArrayAdapter<String> fromAdapter = new ArrayAdapter<String>(this,R.layout.spinner_item,fromlist)
         {
             @Override
             public boolean isEnabled(int position) {
@@ -195,37 +236,10 @@ public class addTI_Form extends AppCompatActivity {
 
         };
         fromAdapter.setDropDownViewResource(R.layout.spinner_item);
-        fromplaceSpinner.setAdapter(fromAdapter);
-
-        fromplaceSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
-            @Override
-            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                if (position>0)
-                {
-                    fromplaceSelected = (String)parent.getItemAtPosition(position);
-                }
-            }
-
-            @Override
-            public void onNothingSelected(AdapterView<?> parent) {
-
-            }
-        });
-//===========================================================================================================================
-        //to spinner
-        List<String> tolist = new ArrayList<String>();
-        fromlist.add("Select a City");
-        fromlist.add("Ahmedabad");
-        fromlist.add("Bangalore");
-        fromlist.add("Chennai");
-        fromlist.add("Delhi");
-        fromlist.add("Kolkata");
-        fromlist.add("Mumbai");
-        fromlist.add("Patna");
-        fromlist.add("Ranchi");
 
 
-        ArrayAdapter<String> toAdapter = new ArrayAdapter<String>(this,R.layout.spinner_item,tolist)
+        // to array adapter
+        final ArrayAdapter<String> toAdapter = new ArrayAdapter<String>(this,R.layout.spinner_item,tolist)
         {
             @Override
             public boolean isEnabled(int position) {
@@ -257,8 +271,29 @@ public class addTI_Form extends AppCompatActivity {
 
         };
         toAdapter.setDropDownViewResource(R.layout.spinner_item);
-        toplaceSpinner.setAdapter(fromAdapter);
 
+        // set array adapter
+        fromplaceSpinner.setAdapter(fromAdapter);
+        toplaceSpinner.setAdapter(toAdapter);
+
+        //from on item click listener
+        fromplaceSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                if (position>0)
+                {
+                    fromplaceSelected = (String)parent.getItemAtPosition(position);
+                    //toAdapter.remove(fromAdapter.getItem(position));
+                }
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+
+            }
+        });
+
+        // to on item click listener
         toplaceSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
@@ -273,7 +308,7 @@ public class addTI_Form extends AppCompatActivity {
 
             }
         });
- //========================================================================================================================
+//========================================================================================================================
         //pref time spinner
         List<String> prefList = new ArrayList<String>();
         prefList.add("Select an option");
